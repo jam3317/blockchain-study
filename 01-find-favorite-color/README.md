@@ -98,6 +98,45 @@ assert.equal(findColor(sha256(utf8ToBytes(color))), color);
 - `findColor`는 `'blue'`라는 글자를 보지 못하고 해시만 받는다.
 - test.js는 이걸 6가지 색 모두에 대해 반복한다.
 
+### test.js 한 줄씩
+
+```js
+const {assert} = require('chai');                                  // 1
+const findColor = require('./index');                              // 2
+const { sha256 } = require("ethereum-cryptography/sha256");        // 3
+const { utf8ToBytes } = require("ethereum-cryptography/utils");    // 4
+
+const COLORS = ['red', 'green', 'blue', 'yellow', 'pink', 'orange']; // 6
+
+describe('findColor', () => {                                      // 8
+    COLORS.forEach((color) => {                                    // 9
+        it(`should work for ${color}`, () => {                     // 10
+            assert.equal(findColor(sha256(utf8ToBytes(color))), color); // 11
+        });
+    });
+});
+```
+
+| 줄 | 하는 일 | Python으로 치면 |
+|----|---------|----------------|
+| 1 | 테스트 라이브러리 chai에서 `assert`만 꺼냄 (`{ }`는 묶음에서 이름 하나만 꺼내는 문법) | `from chai import assert_` |
+| 2 | index.js가 내보낸 함수를 통째로 가져옴 (묶음이 아니라 함수 하나라서 `{ }` 없음) | `from index import find_color` |
+| 3~4 | 문제(해시)를 만들 도구. 해시를 바이트 그대로 넘기므로 `toHex`는 필요 없음 | `from hashlib import sha256` |
+| 6 | 테스트할 색 목록 (index.js에 있어도 파일마다 따로 정의해야 함) | `COLORS = [...]` |
+| 8 | `describe`: 테스트 묶음. mocha로 실행하면 자동으로 제공되어 require가 필요 없음 | `class TestFindColor:` |
+| 9 | 색마다 반복 | `for color in COLORS:` |
+| 10 | `it`: 테스트 하나. 반복문 안이라 6개 생성. `` `${color}` ``는 변수 값으로 바뀜 | f-string `f"... {color}"` |
+| 11 | 안쪽부터: 바이트 변환 → 해시(**출제**) → `findColor`(**풀이**) → `assert.equal`(**채점**) | `assert find_color(...) == color` |
+| 12~14 | 열었던 함수들을 안쪽부터 닫음 (JS는 들여쓰기 대신 `{ }`, `( )`로 블록 구분) | (들여쓰기) |
+
+pytest로 옮기면:
+
+```python
+@pytest.mark.parametrize("color", COLORS)
+def test_find_color(color):
+    assert find_color(sha256(color.encode()).digest()) == color
+```
+
 ---
 
 ## 3. 한 줄씩 따라가기 (`'blue'`의 해시가 들어왔을 때)
@@ -159,7 +198,8 @@ blue    16477688c0e00699... ✔ 같음! → 'blue' 반환
 | `'Blue'` | `[66, 108, 117, 101]` (대문자 B만 다름) |
 | `'파랑'` | `[237, 140, 140, 235, 158, 145]` (한글은 글자당 3바이트) |
 
-- 해시 함수는 숫자 계산이라 글자를 바로 넣을 수 없다.
+- 해시 함수는 숫자 계산이라 글자를 바로 넣을 수 없다. 실제로 `sha256("red")`처럼 문자열을 넣으면 `Uint8Array expected` 에러가 난다. Python도 `hashlib.sha256("red")`는 `TypeError: Strings must be encoded before hashing`이다.
+- 파일 내용, 다른 해시값, 키처럼 **이미 바이트인 데이터**는 변환 없이 바로 넣으면 된다. 사람이 읽는 문자열일 때만 이 단계가 필요하다.
 - 규칙이 다르면 바이트도 달라진다. 예를 들어 UTF-16으로 바꾼 `'blue'`는 `[98, 0, 108, 0, 117, 0, 101, 0]`이다. 그래서 출제자와 같은 규칙(UTF-8)을 써야 같은 해시가 나온다.
 - Python의 `'blue'.encode('utf-8')`과 같다.
 
