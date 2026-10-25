@@ -14,3 +14,4 @@ npx mocha 01-find-favorite-color/test.js
 | # | 문제 | 핵심 개념 |
 |---|------|-----------|
 | 01 | [Find Favorite Color](./01-find-favorite-color) | SHA256 해시, 브루트포스, 바이트 ↔ 16진수 |
+| 01 | [Hash Message](./01-hash-message) | keccak256 해시, 서명 전 단계, keccak256 vs SHA-256 |
