@@ -1,0 +1,79 @@
+{
+ "title": "signTransaction",
+ "subtitle": "wallet1.signTransaction({ value, to, gasLimit, gasPrice })가 거래를 개인키로 서명해 16진수 '원시 거래(raw tx)'를 돌려준다.",
+ "lanes": [
+  [
+   "testSignature.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "sign.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "ethers",
+   "라이브러리",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "sign",
+ "sections": [
+  {
+   "title": "서명",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "note",
+     1,
+     "value: parseEther('1')",
+     "1 ETH = 10¹⁸ wei"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "wallet1.signTransaction({ value, to, gasLimit: 21000, gasPrice })",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "Promise → '0xf86c8085…'",
+     "RLP로 포장된 서명된 거래"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "utils.parseTransaction(hex)",
+     "거래를 다시 풀어 봄"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "{ to, value, gasLimit, from, … }",
+     "from은 서명에서 복구"
+    ],
+    [
+     "self",
+     0,
+     "to, value 1e18, gasLimit 21000, from 0x5409…A631 ?",
+     "✔ 6개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "wallet1.signTransaction({ value: utils.parseEther(\"1\"), to, gasLimit: 21000, gasPrice: utils.parseUnits(\"20\", \"gwei\") })"
+}

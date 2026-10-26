@@ -1,0 +1,85 @@
+{
+ "title": "findMyBalance",
+ "subtitle": "개인키로 provider에 연결된 지갑을 만들고 → wallet.getBalance()로 잔액(BigNumber)을 받는다.",
+ "lanes": [
+  [
+   "testFindBalance.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "findMyBalance.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "ethers",
+   "라이브러리",
+   "teal"
+  ],
+  [
+   "ganache",
+   "가짜 노드",
+   "gray"
+  ]
+ ],
+ "active": 1,
+ "active_label": "findMyBalance",
+ "sections": [
+  {
+   "title": "findMyBalance 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "findMyBalance(PRIVATE_KEY)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "new Wallet(privateKey, provider).getBalance()",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "eth_getBalance(wallet.address, 'latest')",
+     ""
+    ],
+    [
+     "ret",
+     3,
+     1,
+     "BigNumber(10 ETH)",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "Promise<BigNumber>",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "Promise이고, INITIAL_BALANCE.eq(balance) ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "return new Wallet(privateKey, provider).getBalance();"
+}

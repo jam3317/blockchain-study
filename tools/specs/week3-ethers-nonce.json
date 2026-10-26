@@ -1,0 +1,85 @@
+{
+ "title": "sendEther",
+ "subtitle": "지갑을 provider에 연결하고 wallet.sendTransaction을 쓰면, nonce·chainId 같은 빈 값을 ethers가 노드에 물어 채운 뒤 서명·전송까지 한다.",
+ "lanes": [
+  [
+   "testNonce.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "sendEther.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "ethers",
+   "라이브러리",
+   "teal"
+  ],
+  [
+   "ganache",
+   "가짜 노드",
+   "gray"
+  ]
+ ],
+ "active": 1,
+ "active_label": "sendEther",
+ "sections": [
+  {
+   "title": "sendEther × 3",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "sendEther(props) (3번)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "wallet.sendTransaction({ value, to, … })",
+     "new Wallet(KEY, provider)"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "eth_getTransactionCount",
+     "nonce를 노드에 물어봄 → 0, 1, 2"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "eth_sendRawTransaction",
+     "서명해서 전송"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "tx",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "provider.getBlockNumber() === 3 ?",
+     "✔ 거래 3건이 각각 블록이 됨"
+    ]
+   ]
+  }
+ ],
+ "footer": "const wallet = new Wallet(PRIVATE_KEY, provider); return wallet.sendTransaction({ value, to, gasLimit, gasPrice });"
+}

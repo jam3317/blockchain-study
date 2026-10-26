@@ -1,0 +1,98 @@
+{
+ "title": "donate",
+ "subtitle": "자선 단체 주소마다 1 ETH씩 보내고, 각 거래가 블록에 들어갈 때까지(tx.wait) 기다린다.",
+ "lanes": [
+  [
+   "testDonate.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "donate.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "ethers",
+   "라이브러리",
+   "teal"
+  ],
+  [
+   "ganache",
+   "가짜 노드",
+   "gray"
+  ]
+ ],
+ "active": 1,
+ "active_label": "donate",
+ "sections": [
+  {
+   "title": "donate 실행 (단체 3곳)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "donate(PRIVATE_KEY, charities)",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "for (const charity of charities)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "wallet.sendTransaction({ to: charity, value: 1 ETH })",
+     "nonce 자동"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "eth_sendRawTransaction",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "await tx.wait()",
+     "채굴 확인 후 다음 단체로"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "Promise (모두 끝나면 resolve)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     3,
+     "provider.getBalance(charity) × 3",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "각각 ≥ 1 ETH ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "for (const charity of charities) { const tx = await wallet.sendTransaction({ to: charity, value: utils.parseEther(\"1.0\") }); await tx.wait(); }"
+}

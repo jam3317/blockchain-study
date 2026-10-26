@@ -1,0 +1,80 @@
+{
+ "title": "Wallet",
+ "subtitle": "개인키로 new Wallet(...), 니모닉(단어 12개)으로 Wallet.fromMnemonic(...) → 둘 다 주소를 계산해 들고 있다.",
+ "lanes": [
+  [
+   "testWallets.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "wallets.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "ethers",
+   "라이브러리",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "wallets",
+ "sections": [
+  {
+   "title": "wallet1 · 개인키로",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     1,
+     2,
+     "new Wallet('0xf2f48ee1…257d')",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "wallet1",
+     "address 0x5409ED02…A631"
+    ]
+   ]
+  },
+  {
+   "title": "wallet2 · 니모닉으로",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     1,
+     2,
+     "Wallet.fromMnemonic('plate lawn … dutch ice')",
+     "단어 12개 → 시드 → 개인키 (경로 m/44'/60'/0'/0/0)"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "wallet2",
+     "address 0x88E9DD32…75C1"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "instanceof Wallet, 주소가 기대값과 같은가 ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "const wallet1 = new Wallet(PRIVATE_KEY); const wallet2 = Wallet.fromMnemonic(MNEMONIC);"
+}

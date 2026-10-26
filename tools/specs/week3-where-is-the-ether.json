@@ -1,0 +1,104 @@
+{
+ "title": "findEther",
+ "subtitle": "0번 블록부터 최신 블록까지 거래를 모두 꺼내 보고, 보낸 사람이 address인 거래의 받는 주소(to)를 모은다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "findEther.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "ethers",
+   "라이브러리",
+   "teal"
+  ],
+  [
+   "ganache",
+   "가짜 노드",
+   "gray"
+  ]
+ ],
+ "active": 1,
+ "active_label": "findEther",
+ "sections": [
+  {
+   "title": "준비",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     3,
+     "miner_stop → 무작위 주소로 0.5 ETH × 10",
+     "블록1: 3건, 블록2: 4건, 블록3: 3건"
+    ]
+   ]
+  },
+  {
+   "title": "findEther 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "findEther(FROM_ADDRESS)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "provider.getBlockNumber()",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "3",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "getBlockWithTransactions(0 … 3)",
+     "블록마다 거래 객체 전체"
+    ],
+    [
+     "note",
+     1,
+     "tx.from === address → tx.to 저장",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "주소 10개",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "개수 10, 같은 주소들(sameMembers) ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "for (let i = 0; i <= latest; i++) { const block = await provider.getBlockWithTransactions(i); for (const tx of block.transactions) if (tx.from === address) addresses.push(tx.to); }"
+}
