@@ -1,0 +1,92 @@
+{
+ "title": "enum",
+ "subtitle": "enum Foods { Apple, Pizza, Bagel, Banana }의 값을 food1~4에 저장. 밖에서 읽으면 0, 1, 2, 3 숫자로 보인다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getContractFactory('Contract').deploy()",
+     "컴파일된 바이트코드를 체인에 올림"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor 실행 (상태 변수 초기화)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "Foods public food1 = Foods.Apple; …",
+     "내부적으로 uint8"
+    ]
+   ]
+  },
+  {
+   "title": "읽기 (public 변수의 getter)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "callStatic.food1() … food4()",
+     "callStatic = 거래 없이 읽기만"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "자동 생성된 getter 함수 실행",
+     "저장된 값을 그대로 돌려줌"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "0, 1, 2, 3",
+     "이름이 아니라 순서 번호"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "food1~4 모두 ≥ 0 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "enum Foods { Apple, Pizza, Bagel, Banana }  Foods public food1 = Foods.Apple; …"
+}

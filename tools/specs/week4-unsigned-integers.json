@@ -1,0 +1,92 @@
+{
+ "title": "uint",
+ "subtitle": "uint8(0~255), uint16(0~65535)에 값을 넣고, 둘을 더한 값을 uint256 sum에 저장한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getContractFactory('Contract').deploy()",
+     "컴파일된 바이트코드를 체인에 올림"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor 실행 (상태 변수 초기화)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "uint8 a = 15; uint16 b = 1000; uint256 sum = a + b;",
+     "sum = 1015"
+    ]
+   ]
+  },
+  {
+   "title": "읽기 (public 변수의 getter)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "callStatic.a(), b(), sum()",
+     "callStatic = 거래 없이 읽기만"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "자동 생성된 getter 함수 실행",
+     "저장된 값을 그대로 돌려줌"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "15, 1000, BigNumber(1015)",
+     "uint256은 JS 숫자 범위를 넘을 수 있어 BigNumber"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "a ≤ 255, b ≥ 256, sum === a + b ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "uint8 public a = 15;  uint16 public b = 1000;  uint256 public sum = a + b;"
+}

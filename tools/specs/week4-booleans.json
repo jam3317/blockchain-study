@@ -1,0 +1,92 @@
+{
+ "title": "bool",
+ "subtitle": "public 상태 변수 a = true, b = false를 만들면 Solidity가 a(), b() 읽기 함수를 자동으로 만들어 준다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getContractFactory('Contract').deploy()",
+     "컴파일된 바이트코드를 체인에 올림"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor 실행 (상태 변수 초기화)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "bool public a = true; bool public b = false;",
+     "상태 변수 = 체인에 영구 저장"
+    ]
+   ]
+  },
+  {
+   "title": "읽기 (public 변수의 getter)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.callStatic.a()",
+     "callStatic = 거래 없이 읽기만"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "a() getter 호출",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "true / false",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "a === true, b === false ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "bool public a = true;  bool public b = false;"
+}

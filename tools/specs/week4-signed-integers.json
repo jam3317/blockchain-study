@@ -1,0 +1,92 @@
+{
+ "title": "int",
+ "subtitle": "int8 a = 10, b = -15. 차이 25는 int8 범위(-128~127)에서 계산하면 위험해서 int16으로 바꾼 뒤 뺀다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getContractFactory('Contract').deploy()",
+     "컴파일된 바이트코드를 체인에 올림"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor 실행 (상태 변수 초기화)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "int16 difference = int16(a) - int16(b);",
+     "10 - (-15) = 25"
+    ]
+   ]
+  },
+  {
+   "title": "읽기 (public 변수의 getter)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "callStatic.a(), b(), difference()",
+     "callStatic = 거래 없이 읽기만"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "자동 생성된 getter 함수 실행",
+     "저장된 값을 그대로 돌려줌"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "10, -15, 25",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "한쪽은 양수·한쪽은 음수, difference === |a - b| ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "int8 public a = 10;  int8 public b = -15;  int16 public difference = int16(a) - int16(b);"
+}

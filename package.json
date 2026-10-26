@@ -8,6 +8,8 @@
     "ganache": "^7.9.2"
   },
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "hardhat": "^2.22.17",
     "mocha": "^10.8.2"
   }
 }
