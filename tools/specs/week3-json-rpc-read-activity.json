@@ -1,0 +1,96 @@
+{
+ "title": "JSON-RPC 읽기",
+ "subtitle": "index.js가 공개 이더리움 노드에 JSON-RPC 요청을 HTTP POST로 보내고, 돌아온 JSON의 result를 읽어 출력한다.",
+ "lanes": [
+  [
+   "터미널",
+   "node index.js",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "eth.drpc.org",
+   "공개 메인넷 노드",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "index.js",
+ "sections": [
+  {
+   "title": "강의 예제 · 46147번 블록",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "node index.js",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "POST { method: 'eth_getBlockByNumber', params: ['0xb443', true] }",
+     "true = 거래 객체 전체"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "{ result: { hash, miner, timestamp, transactions: [1건] } }",
+     "2015-08-07, 이더리움 첫 송금 거래"
+    ]
+   ]
+  },
+  {
+   "title": "다른 메서드로 바꿔 보기",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     1,
+     2,
+     "eth_blockNumber / eth_chainId / eth_gasPrice",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "'0x190f…' / '0x1' / '0x…'",
+     "16진수 문자열 → parseInt"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "eth_getBalance, eth_getTransactionCount",
+     "이더리움 재단 주소"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "잔액, nonce",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "콘솔 출력",
+     "output.txt에 저장"
+    ]
+   ]
+  }
+ ],
+ "footer": "fetch(RPC_URL, { method: \"POST\", body: JSON.stringify({ jsonrpc: \"2.0\", id: 1, method, params }) })"
+}

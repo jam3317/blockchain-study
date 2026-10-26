@@ -1,0 +1,99 @@
+{
+ "title": "서명된 거래 보내기",
+ "subtitle": "index.js가 .env의 테스트 개인키로 Sepolia 거래를 서명하고(signTransaction) → 노드에 보낸다(eth_sendRawTransaction).",
+ "lanes": [
+  [
+   "터미널",
+   "node --env-file=.env",
+   "blue"
+  ],
+  [
+   "index.js",
+   "준비된 스크립트",
+   "orange"
+  ],
+  [
+   "ethers",
+   "Wallet · Provider",
+   "teal"
+  ],
+  [
+   "Sepolia 노드",
+   "Alchemy URL",
+   "gray"
+  ]
+ ],
+ "active": 1,
+ "active_label": "index.js",
+ "sections": [
+  {
+   "title": "준비",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "node --env-file=.env index.js",
+     "TEST_PRIVATE_KEY, SEPOLIA_RPC_URL, TO_ADDRESS"
+    ]
+   ]
+  },
+  {
+   "title": "서명하고 보내기",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     1,
+     3,
+     "eth_getTransactionCount(내 주소)",
+     "nonce"
+    ],
+    [
+     "note",
+     1,
+     "{ to, value: 0.001 ETH, gasLimit: 21000, type: 2, chainId: 11155111, nonce, … }",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "wallet.signTransaction(transaction)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "rawTransaction",
+     "'0x02f8…' (type 2 거래)"
+    ],
+    [
+     "call",
+     1,
+     3,
+     "eth_sendRawTransaction(rawTransaction)",
+     ""
+    ],
+    [
+     "ret",
+     3,
+     1,
+     "tx.hash",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "https://sepolia.etherscan.io/tx/…",
+     "Etherscan에서 확인"
+    ]
+   ]
+  }
+ ],
+ "footer": "const rawTransaction = await wallet.signTransaction(transaction); const tx = await provider.sendTransaction(rawTransaction);"
+}

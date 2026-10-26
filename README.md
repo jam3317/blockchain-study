@@ -61,3 +61,22 @@ npx mocha week3/block-number/test.js --exit   # ganache를 쓰는 week3부터는
 | 34 | Learn Tries | [Simple Trie Insert](./week2/trie-insert) | insert, isWord |
 | 35 | Learn Tries | [Branching](./week2/trie-branching) | 접두사 공유 |
 | 36 | Learn Tries | [Does it Contain the Word?](./week2/trie-contains) | contains |
+
+### Week 3
+
+| # | 과제 | 단계 | 핵심 개념 |
+|---|------|------|-----------|
+| 37 | Activity: Query Ethereum | [JSON-RPC Read Requests](./week3/json-rpc-read-activity) | 공개 노드에 실제 읽기 요청, fetch |
+| 38 | JSON-RPC Requests | [Current Block Number](./week3/block-number) | JSON-RPC 형식, eth_blockNumber, ganache |
+| 39 | JSON-RPC Requests | [Get Balance](./week3/get-balance) | eth_getBalance, 블록 태그, wei |
+| 40 | JSON-RPC Requests | [Transaction Nonce](./week3/get-nonce) | eth_getTransactionCount, 재전송 공격 |
+| 41 | JSON-RPC Requests | [Block Transactions](./week3/total-transactions) | 블록 번호 16진수, 가스 한도 |
+| 42 | JSON-RPC Requests | [Batch Transactions](./week3/batch-balance) | 묶음 요청, id, parseInt |
+| 43 | Code a Transaction | [Send a Signed Transaction (직접 실행)](./week3/sign-tx-activity) | Sepolia, Type 2 거래, .env |
+| 44 | Intro to Ethers.js | [Making Wallets](./week3/ethers-wallets) | Wallet, 니모닉 |
+| 45 | Intro to Ethers.js | [Sign a Transaction](./week3/ethers-sign) | signTransaction, parseEther, 가스 |
+| 46 | Intro to Ethers.js | [Connect to Ethereum](./week3/ethers-connect) | Web3Provider, 전송 |
+| 47 | Intro to Ethers.js | [Account Nonce](./week3/ethers-nonce) | wallet.sendTransaction, nonce 자동 |
+| 48 | Intro to Ethers.js | [Retrieve the Balance](./week3/ethers-balance) | getBalance, BigNumber |
+| 49 | Intro to Ethers.js | [Donating to Charities](./week3/ethers-donate) | for…of + await, tx.wait |
+| 50 | Where is the Ether? | [Where is the Ether?](./week3/where-is-the-ether) | getBlockWithTransactions, 거래 추적 |
