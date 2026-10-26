@@ -9,6 +9,9 @@ const stage = process.env.STAGE || "week4";
 module.exports = {
     // 문제마다 pragma 버전이 달라서 컴파일러를 여러 개 둔다.
     solidity: { compilers: [{ version: "0.8.20" }, { version: "0.7.5" }] },
+    // selfdestruct 문제(week4/self-destruct)가 강의 환경처럼 동작하도록 Cancun 이전 규칙으로 실행한다.
+    // Cancun(EIP-6780)부터는 selfdestruct가 컨트랙트 코드를 지우지 않는다.
+    networks: { hardhat: { hardfork: "shanghai" } },
     paths: {
         sources: path.join(__dirname, stage),
         tests: path.join(__dirname, stage),

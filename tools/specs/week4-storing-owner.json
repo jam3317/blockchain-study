@@ -1,0 +1,79 @@
+{
+ "title": "owner",
+ "subtitle": "constructor에서 msg.sender(배포한 계정)를 owner에 저장한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Contract.deploy()",
+     "계정 0이 배포 거래를 보냄"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor()",
+     "msg.sender = 계정 0"
+    ],
+    [
+     "note",
+     2,
+     "owner = msg.sender;",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "contract.owner.call()",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "계정 0 주소",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "=== listAccounts()[0] ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor() { owner = msg.sender; }"
+}

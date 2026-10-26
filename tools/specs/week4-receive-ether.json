@@ -1,0 +1,65 @@
+{
+ "title": "receive",
+ "subtitle": "함수 이름 없이(calldata 없이) 이더만 보내면 receive()가 실행된다. payable이라 받은 이더가 컨트랙트 잔액에 쌓인다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "이더 보내기",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "owner.sendTransaction({ to: contract.address, value: 1 ETH })",
+     "EOA에 보내듯이"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "receive() external payable",
+     "calldata가 비어 있음"
+    ],
+    [
+     "note",
+     2,
+     "address(this).balance += 1 ETH",
+     "자동으로 쌓임"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "getBalance(contract) == 1 ETH ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "receive() external payable { }"
+}

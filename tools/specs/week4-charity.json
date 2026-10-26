@@ -1,0 +1,91 @@
+{
+ "title": "donate",
+ "subtitle": "constructor에서 자선 단체 주소를 받아 두고, donate()가 컨트랙트 잔액 전부(address(this).balance)를 그 주소로 보낸다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "다른 계정",
+   "owner / tipper / charity",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "배포 + 기부금 1 ETH",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Contract.deploy(charity)",
+     "무작위 주소"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "sendTransaction(1 ETH)",
+     "receive()"
+    ]
+   ]
+  },
+  {
+   "title": "donate()",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.connect(tipper).donate()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "donate()",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "charity.call{ value: address(this).balance }(\"\")",
+     "1 ETH 전부"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "getBalance(charity) == 1 ETH ?",
+     "✔ 4개 통과 (tip 테스트 포함)"
+    ]
+   ]
+  }
+ ],
+ "footer": "(bool success, ) = charity.call{ value: address(this).balance }(\"\");"
+}

@@ -1,0 +1,77 @@
+{
+ "title": "selfdestruct",
+ "subtitle": "donate()에서 selfdestruct(charity)를 부르면 남은 이더를 전부 charity에 보내고 컨트랙트 코드가 사라진다 (Cancun 이전 규칙).",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "다른 계정",
+   "owner / tipper / charity",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "donate()",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.connect(tipper).donate()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "donate()",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "selfdestruct(payable(charity))",
+     "잔액 1 ETH가 charity로"
+    ],
+    [
+     "note",
+     2,
+     "컨트랙트 코드 삭제",
+     "이후 getCode = '0x'"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "charity 잔액 1 ETH, getCode(contract) === '0x' ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function donate() public { selfdestruct(payable(charity)); }"
+}

@@ -1,0 +1,84 @@
+{
+ "title": "tip",
+ "subtitle": "tipper가 tip()에 이더를 실어 보내면, 컨트랙트가 받은 금액(msg.value)을 그대로 owner에게 call로 보낸다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "다른 계정",
+   "owner / tipper / charity",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "tip 0.25 ETH",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.connect(tipper).tip({ value: 0.25 ETH })",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "tip() payable",
+     "msg.value = 0.25 ETH"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "owner.call{ value: msg.value }(\"\")",
+     "owner에게 송금"
+    ],
+    [
+     "ret",
+     3,
+     2,
+     "(true, )",
+     "성공 여부"
+    ],
+    [
+     "note",
+     2,
+     "require(success)",
+     "실패하면 전체 되돌림"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "owner 잔액 증가 == 0.25 ETH ? (0.5도)",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "(bool success, ) = owner.call{ value: msg.value }(\"\"); require(success);"
+}
