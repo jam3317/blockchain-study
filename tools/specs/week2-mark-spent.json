@@ -1,0 +1,111 @@
+{
+ "title": "execute",
+ "subtitle": "검사를 모두 통과한 뒤에만 입력 UTXO들을 spend()로 사용 처리한다. 실패하면 아무것도 바꾸지 않는다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Transaction.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "TXO.js",
+   "txo-class 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "execute",
+ "sections": [
+  {
+   "title": "성공: [5, 5] → [7, 3]",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "tx.execute()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "검사 1: 쓴 입력 없음 ✔  검사 2: 10 ≥ 10 ✔",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "inputUTXOs.forEach(u => u.spend())",
+     "검사가 끝난 다음에"
+    ],
+    [
+     "self",
+     0,
+     "txo1.spent && txo2.spent ?",
+     "✔ 통과"
+    ]
+   ]
+  },
+  {
+   "title": "실패: [3, 4] → [7, 3]",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "tx.execute()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "검사 2: 7 < 10 ✗ → throw",
+     "spend()까지 가지 않음"
+    ],
+    [
+     "self",
+     0,
+     "에러가 났고 txo3, txo4는 그대로 unspent ?",
+     "✔ 통과"
+    ]
+   ]
+  },
+  {
+   "title": "이중 지불: [txo1(이미 씀), txo4]",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "tx.execute()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "검사 1: txo1이 spent ✗ → throw",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "txo4는 여전히 unspent ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "// 검사들이 모두 통과한 뒤 맨 끝에서:  this.inputUTXOs.forEach((utxo) => utxo.spend());"
+}

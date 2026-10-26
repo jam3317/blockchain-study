@@ -57,7 +57,8 @@ def build(spec):
     W = 1600
     lanes = spec["lanes"]
     n = len(lanes)
-    left, right = 230, W - 210
+    left = 230
+    right = min(W - 210, left + 520 * max(n - 1, 1))
     LX = [left + (right - left) * i / max(n - 1, 1) for i in range(n)]
     box_w = min(230, (right - left) / max(n - 1, 1) - 30) if n > 1 else 230
 
@@ -76,6 +77,8 @@ def build(spec):
 
     def arrow(a, b, label, sub, dashed):
         nonlocal y
+        if a == b:
+            return self_call(a, label, sub)
         x1, x2 = LX[a], LX[b]
         d = 1 if x2 > x1 else -1
         sx = x1 + 8 * d
@@ -107,16 +110,29 @@ def build(spec):
         badge(x - 34, y - 14)
         y += STEP
 
+    def self_call(a, label, sub):
+        nonlocal y
+        x = LX[a] + 8
+        svg.append(f'<path d="M{x} {y-14} H{x+60} V{y+14} H{x+16}" fill="none" stroke="#111827" stroke-width="2"/>')
+        svg.append(f'<polygon points="{x+2},{y+14} {x+18},{y+6} {x+18},{y+22}" fill="#111827"/>')
+        svg.append(f'<text x="{x+76}" y="{y}" font-size="15" font-weight="700" fill="#111827" font-family="{MONO}">{esc(label)}</text>')
+        if sub:
+            svg.append(f'<text x="{x+76}" y="{y+20}" font-size="13" fill="#9a3412" font-family="{MONO}">{esc(sub)}</text>')
+        badge(LX[a] - 34, y - 14)
+        y += STEP
+
     def note(a, label, sub):
         nonlocal y
         x = LX[a] + 22
         lines = [label] + ([sub] if sub else [])
-        width = max(len(s) for s in lines) * 9 + 40
+        width = max(sum(2 if ord(c) > 0x2E80 else 1 for c in s) for s in lines) * 8.6 + 40
+        if x + width > W - 80:
+            x = LX[a] - 22 - width
         h = 26 + 22 * len(lines)
         svg.append(f'<rect x="{x}" y="{y-22}" width="{width}" height="{h}" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-dasharray="4 3"/>')
-        svg.append(f'<text x="{x+16}" y="{y}" font-size="14" font-weight="700" fill="#92400e" font-family="{MONO}">{esc(label)}</text>')
+        svg.append(f'<text x="{x+16}" y="{y}" xml:space="preserve" font-size="14" font-weight="700" fill="#92400e" font-family="{MONO}">{esc(label)}</text>')
         if sub:
-            svg.append(f'<text x="{x+16}" y="{y+22}" font-size="13" fill="#92400e" font-family="{SANS}">{esc(sub)}</text>')
+            svg.append(f'<text x="{x+16}" y="{y+22}" xml:space="preserve" font-size="13" fill="#92400e" font-family="{MONO}">{esc(sub)}</text>')
         y += h + 24
 
     sections = []

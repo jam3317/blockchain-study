@@ -1,0 +1,80 @@
+{
+ "title": "execute",
+ "subtitle": "입력 금액 합계가 출력 금액 합계보다 작으면 에러를 던진다. 합계는 reduce로 구한다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Transaction.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "TXO.js",
+   "txo-class 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "execute",
+ "sections": [
+  {
+   "title": "충분할 때 (5 + 5 ≥ 10)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "tx.execute()",
+     "입력 [5, 5], 출력 [10]"
+    ],
+    [
+     "note",
+     1,
+     "inputAmount = reduce(+) = 10",
+     "outputAmount = 10"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "에러 없음",
+     "✔ 통과"
+    ]
+   ]
+  },
+  {
+   "title": "부족할 때 (3 + 3 + 3 < 10)",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "tx.execute()",
+     "입력 [3, 3, 3], 출력 [10]"
+    ],
+    [
+     "note",
+     1,
+     "inputAmount 9 < outputAmount 10",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "throw new Error(...)",
+     "✔ 에러가 나야 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "const inputAmount = this.inputUTXOs.reduce((sum, utxo) => sum + utxo.amount, 0);"
+}

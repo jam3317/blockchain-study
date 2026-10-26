@@ -1,0 +1,60 @@
+{
+ "title": "Tree",
+ "subtitle": "new Tree()가 root를 null로 시작한다. 빈 트리.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Tree.js",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 1,
+ "active_label": "Tree",
+ "sections": [
+  {
+   "title": "constructor",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "new Tree()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "this.root = null",
+     "아직 노드 없음"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "tree",
+     "{ root: null }"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "tree.root === null ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor() { this.root = null; }"
+}

@@ -1,0 +1,78 @@
+{
+ "title": "addNode",
+ "subtitle": "addChild(parent, child)가 작으면 왼쪽·크면 오른쪽으로 내려가다가 빈 자리를 만나면 붙인다 (재귀).",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Tree.js",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 1,
+ "active_label": "addNode",
+ "sections": [
+  {
+   "title": "준비: 5, 3, 7이 들어 있는 트리",
+   "color": "gray",
+   "steps": [
+    [
+     "note",
+     1,
+     "      5",
+     "    3   7"
+    ]
+   ]
+  },
+  {
+   "title": "addNode(4)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "addNode(new Node(4))",
+     "root가 있으니 addChild(root, 4)"
+    ],
+    [
+     "note",
+     1,
+     "addChild(5, 4): 4 < 5 → 왼쪽",
+     "left(3)가 있음 → 한 칸 내려감"
+    ],
+    [
+     "call",
+     1,
+     1,
+     "addChild(3, 4)",
+     "재귀 호출"
+    ],
+    [
+     "note",
+     1,
+     "4 ≥ 3 → 오른쪽",
+     "right가 비어 있음 → 3.right = 4"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "root.left.right.data === 4 ?",
+     "✔ 2, 4, 6, 8도 같은 방식 → 8개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "addChild(parent, child) { if (child.data < parent.data) { parent.left ? this.addChild(parent.left, child) : parent.left = child; } else { ... } }"
+}

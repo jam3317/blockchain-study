@@ -1,0 +1,103 @@
+{
+ "title": "execute",
+ "subtitle": "Transaction.execute()가 입력 TXO 중 하나라도 이미 쓴(spent) 것이 있으면 에러를 던진다 → 이중 지불 방지.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Transaction.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "TXO.js",
+   "txo-class 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "execute",
+ "sections": [
+  {
+   "title": "안 쓴 입력만 있을 때",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "new Transaction([5, 5], [10]).execute()",
+     "입력 2개, 출력 1개"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "inputUTXOs.some(u => u.spent)",
+     "하나라도 spent인가?"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "false",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "에러 없이 끝",
+     "✔ 통과"
+    ]
+   ]
+  },
+  {
+   "title": "이미 쓴 입력이 섞였을 때",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "txo2.spend()",
+     "입력 3개 중 2번째를 미리 씀"
+    ],
+    [
+     "call",
+     0,
+     1,
+     "tx.execute()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "inputUTXOs.some(u => u.spent)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "true",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "throw new Error(...)",
+     "✔ 에러가 나야 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "if (this.inputUTXOs.some((utxo) => utxo.spent)) throw new Error(\"Cannot include a spent UTXO as an input!\");"
+}

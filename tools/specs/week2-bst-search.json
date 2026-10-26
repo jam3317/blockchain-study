@@ -1,0 +1,99 @@
+{
+ "title": "hasNode",
+ "subtitle": "hasNode(n)이 root부터 작으면 왼쪽·크면 오른쪽으로 내려가며 찾는다. 길이 끊기면 false.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Tree.js",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 1,
+ "active_label": "hasNode",
+ "sections": [
+  {
+   "title": "hasNode(4) · 트리: 5 → 3 → 4",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "tree.hasNode(4)",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "current = 5: 4 < 5 → 왼쪽",
+     "current = root.left"
+    ],
+    [
+     "note",
+     1,
+     "current = 3: 4 > 3 → 오른쪽",
+     "current = 3.right"
+    ],
+    [
+     "note",
+     1,
+     "current = 4: 같음!",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "true",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "hasNode(4) · 트리에 5만 있을 때",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "tree.hasNode(4)",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "current = 5: 4 < 5 → 왼쪽",
+     "root.left가 null → 반복 끝"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "false",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "있으면 true, 없으면 false ?",
+     "✔ 11개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "while (current) { if (number === current.data) return true; current = number < current.data ? current.left : current.right; } return false;"
+}

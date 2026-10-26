@@ -1,0 +1,60 @@
+{
+ "title": "Node",
+ "subtitle": "new Node(data)가 값을 data에 저장하고, 왼쪽·오른쪽 자식 자리를 null로 비워 둔다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Node.js",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 1,
+ "active_label": "Node",
+ "sections": [
+  {
+   "title": "constructor",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "new Node(3)",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "this.data = 3, this.left = null, this.right = null",
+     "자식은 아직 없음"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "node",
+     "{ data: 3, left: null, right: null }"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "data === 3, left === null, right === null ?",
+     "✔ strictEqual로 null인지까지 확인"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor(data) { this.data = data; this.left = null; this.right = null; }"
+}

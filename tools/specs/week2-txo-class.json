@@ -1,0 +1,80 @@
+{
+ "title": "TXO",
+ "subtitle": "new TXO(owner, amount)가 주인·금액을 저장하고 spent를 false로 시작 → spend()가 spent를 true로 바꾼다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "TXO.js",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 1,
+ "active_label": "TXO",
+ "sections": [
+  {
+   "title": "constructor",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "new TXO(address, 10)",
+     "주소 1DBS97…id1N6, 금액 10"
+    ],
+    [
+     "note",
+     1,
+     "this.owner / this.amount / this.spent = false",
+     "받은 값 저장 + 아직 안 씀"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "txo 객체",
+     "{ owner, amount: 10, spent: false }"
+    ],
+    [
+     "self",
+     0,
+     "owner, amount, spent === false ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  },
+  {
+   "title": "spend",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "txo.spend()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "this.spent = true",
+     "썼다고 표시"
+    ],
+    [
+     "self",
+     0,
+     "txo.spent === true ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor(owner, amount) { this.owner = owner; this.amount = amount; this.spent = false; }  spend() { this.spent = true; }"
+}

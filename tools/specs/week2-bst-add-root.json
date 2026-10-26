@@ -1,0 +1,65 @@
+{
+ "title": "addNode",
+ "subtitle": "빈 트리에 addNode(node)를 하면 그 노드가 root가 된다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Tree.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Node.js",
+   "bst-node 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "addNode",
+ "sections": [
+  {
+   "title": "addNode 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "new Node(2)",
+     ""
+    ],
+    [
+     "call",
+     0,
+     1,
+     "tree.addNode(node)",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "this.root = node",
+     "빈 트리라고 가정"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "tree.root.data === 2 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "addNode(node) { this.root = node; }"
+}

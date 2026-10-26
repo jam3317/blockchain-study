@@ -1,0 +1,85 @@
+{
+ "title": "execute",
+ "subtitle": "입력 합계 − 출력 합계 = 수수료(fee). 남는 금액은 채굴자에게 간다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Transaction.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "TXO.js",
+   "txo-class 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "execute",
+ "sections": [
+  {
+   "title": "남는 금액 없음: [5, 5] → [7, 3]",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "tx.execute()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "fee = 10 − 10 = 0",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "tx.fee === 0 ?",
+     "✔ 통과"
+    ]
+   ]
+  },
+  {
+   "title": "남는 금액 있음: [15] → [7, 6]",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "tx.execute()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "txo1.spend()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "fee = 15 − 13 = 2",
+     "채굴자 몫"
+    ],
+    [
+     "self",
+     0,
+     "tx.fee === 2 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "this.fee = inputAmount - outputAmount;"
+}
