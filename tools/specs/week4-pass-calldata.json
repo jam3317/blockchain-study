@@ -1,0 +1,84 @@
+{
+ "title": "relay",
+ "subtitle": "JS(ethers)가 calldata를 만들어 Sidekick에 넘기면, Sidekick은 내용을 몰라도 그대로 Hero에 전달한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Sidekick.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hero.sol",
+   "주어진 컨트랙트",
+   "pink"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Sidekick",
+ "sections": [
+  {
+   "title": "relay",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "hero.interface.encodeFunctionData('alert', [5, true])",
+     "JS에서 calldata 만들기"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "0x89434ea7…",
+     ""
+    ],
+    [
+     "call",
+     0,
+     2,
+     "sidekick.relay(hero.address, calldata)",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "hero.call(data)",
+     "받은 bytes를 그대로"
+    ],
+    [
+     "note",
+     3,
+     "alert(5, true) 실행",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "ambush = (true, 5, true) ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function relay(address hero, bytes memory data) external { (bool success, ) = hero.call(data); require(success); }"
+}

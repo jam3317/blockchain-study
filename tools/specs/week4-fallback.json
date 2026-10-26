@@ -1,0 +1,77 @@
+{
+ "title": "fallback",
+ "subtitle": "Hero에 없는 함수 선택자로 부르면 fallback()이 실행된다. fallback은 lastContact에 블록 시간을 기록한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Sidekick.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hero.sol",
+   "주어진 컨트랙트",
+   "pink"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Sidekick",
+ "sections": [
+  {
+   "title": "makeContact",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "sidekick.makeContact(hero.address)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "makeContact(hero)",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "hero.call(encodeWithSignature(\"doesNotExist()\"))",
+     "Hero에 없는 선택자"
+    ],
+    [
+     "note",
+     3,
+     "fallback() → lastContact = block.timestamp",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "hero.lastContact() != 0 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "fallback() external { lastContact = block.timestamp; }"
+}

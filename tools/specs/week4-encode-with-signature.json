@@ -1,0 +1,83 @@
+{
+ "title": "encodeWithSignature",
+ "subtitle": "abi.encodeWithSignature(\"alert(uint256,bool)\", 5, true)가 선택자 + 인자들을 32바이트씩 붙여 calldata를 만든다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Sidekick.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hero.sol",
+   "주어진 컨트랙트",
+   "pink"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Sidekick",
+ "sections": [
+  {
+   "title": "sendAlert(hero, 5, true)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "sidekick.sendAlert(hero.address, 5, true)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "sendAlert(hero, enemies, armed)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "encodeWithSignature(\"alert(uint256,bool)\", 5, true)",
+     "0x89434ea7 + 00…05 + 00…01"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "hero.call(payload)",
+     ""
+    ],
+    [
+     "note",
+     3,
+     "ambush = Ambush(true, 5, true)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "ambush = (true, 5, true) ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "abi.encodeWithSignature(\"alert(uint256,bool)\", enemies, armed)  // uint 대신 uint256"
+}

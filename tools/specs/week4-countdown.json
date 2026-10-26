@@ -1,0 +1,86 @@
+{
+ "title": "tick",
+ "subtitle": "tick()을 부를 때마다 ticks를 1씩 줄이고, 0이 되면 selfdestruct로 컨트랙트를 지운다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "tick() × 9",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.tick() (9번)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "tick()",
+     "ticks: 10 → 1"
+    ],
+    [
+     "self",
+     0,
+     "getCode != '0x' ?",
+     "✔ 아직 살아 있음"
+    ]
+   ]
+  },
+  {
+   "title": "10번째 tick()",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.tick()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "tick()",
+     "ticks: 1 → 0"
+    ],
+    [
+     "note",
+     2,
+     "selfdestruct(payable(msg.sender))",
+     "코드 삭제"
+    ],
+    [
+     "self",
+     0,
+     "getCode === '0x' ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function tick() external { ticks--; if (ticks == 0) selfdestruct(payable(msg.sender)); }"
+}

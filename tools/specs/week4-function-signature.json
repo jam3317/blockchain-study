@@ -1,0 +1,90 @@
+{
+ "title": "함수 선택자",
+ "subtitle": "keccak256(\"alert()\")의 앞 4바이트(0x76d66fdb)가 함수 선택자. 이것만 calldata로 보내면 alert()이 실행된다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Sidekick.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hero.sol",
+   "주어진 컨트랙트",
+   "pink"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Sidekick",
+ "sections": [
+  {
+   "title": "sendAlert",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "sidekick.sendAlert(hero.address)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "sendAlert(address hero)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "bytes4(keccak256(\"alert()\"))",
+     "= 0x76d66fdb"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "hero.call(0x76d66fdb)",
+     "저수준 호출"
+    ],
+    [
+     "ret",
+     3,
+     2,
+     "(true, )",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(success)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "hero.alerted() === true ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "bytes4 signature = bytes4(keccak256(\"alert()\")); hero.call(abi.encodePacked(signature));"
+}
