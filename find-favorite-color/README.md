@@ -255,7 +255,7 @@ Python은 `b'\x01\x02' == b'\x01\x02'`가 `True`라서 이런 변환이 필요 �
 ├── node_modules/        ← 설치된 라이브러리 (Python의 site-packages)
 ├── package.json         ← 필요한 라이브러리 목록 (장보기 목록)
 ├── package-lock.json    ← 설치된 정확한 버전 (영수증)
-└── 01-find-favorite-color/
+└── find-favorite-color/
 ```
 
 - `require`는 현재 폴더에 `node_modules`가 없으면 한 단계씩 위로 올라가며 찾는다. 그래서 바깥에 한 번만 설치하면 모든 문제 폴더에서 쓸 수 있다.
@@ -270,13 +270,15 @@ Python은 `b'\x01\x02' == b'\x01\x02'`가 `True`라서 이런 변환이 필요 �
 
 ### 폴더 이름
 
-`1: Find Favorite Color`처럼 띄어쓰기나 `:`가 있으면 터미널에서 매번 따옴표로 감싸야 한다. `01-find-favorite-color`처럼 쓰면 따옴표가 필요 없고, 앞에 두 자리 번호를 붙이면 10번이 넘어가도 순서대로 정렬된다.
+`1: Find Favorite Color`처럼 띄어쓰기나 `:`가 있으면 터미널에서 매번 따옴표로 감싸야 한다. `find-favorite-color`처럼 소문자와 `-`로 쓰면 따옴표가 필요 없다.
+
+폴더 이름 앞에는 번호를 붙이지 않는다. 강의의 단계 번호는 섹션마다 1부터 다시 시작해서 겹치기 때문이다. 푼 순서는 맨 위 `README.md`의 문제 목록에 번호로 적는다.
 
 ### 실행 방법
 
 ```bash
 # 테스트로 채점하기 (Python의 pytest)
-npx mocha 01-find-favorite-color/test.js
+npx mocha find-favorite-color/test.js
 ```
 
 `✔`만 나오면 정상이다. 테스트는 채점만 하고 과정은 보여 주지 않는다.

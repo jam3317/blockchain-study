@@ -76,7 +76,7 @@ def hash_message(message):
 
 지난 문제의 `toHex(sha256(utf8ToBytes(color)))`에서 **`sha256` → `keccak256`으로 바꾸고 `toHex`를 빼면** 이번 정답이다.
 
-| | 01-find-favorite-color | 01-hash-message |
+| | find-favorite-color | hash-message |
 |---|---|---|
 | 해시 함수 | `sha256` | `keccak256` |
 | 함수가 받는 것 | 해시 | 문자열 |
@@ -206,7 +206,7 @@ pow(10, public_key, n)                     # 지어낸 서명: 10 → 4가 아�
 
 ```bash
 # 테스트로 채점하기 (바깥 폴더 기준)
-npx mocha 01-hash-message/test.js
+npx mocha hash-message/test.js
 ```
 
 ```
@@ -219,7 +219,7 @@ npx mocha 01-hash-message/test.js
 해시값을 직접 보고 싶을 때:
 
 ```bash
-node -e 'const h = require("./01-hash-message/hashMessage"); const { toHex } = require("ethereum-cryptography/utils"); console.log(toHex(h("hello world")))'
+node -e 'const h = require("./hash-message/hashMessage"); const { toHex } = require("ethereum-cryptography/utils"); console.log(toHex(h("hello world")))'
 ```
 
 `"hello world"`를 다른 문자열로 바꾸면 해시가 완전히 달라진다.
@@ -229,8 +229,8 @@ node -e 'const h = require("./01-hash-message/hashMessage"); const { toHex } = r
 ## 7. Git에 올리기
 
 ```bash
-git add 01-hash-message
-git commit -m "01-hash-message 풀이"
+git add hash-message
+git commit -m "hash-message 풀이"
 git push
 ```
 

@@ -201,7 +201,7 @@ npm install ethereum-cryptography@1.2.0
 ## 7. 실행 방법
 
 ```bash
-npx mocha 02-sign-message/test.js
+npx mocha sign-message/test.js
 ```
 
 ```
