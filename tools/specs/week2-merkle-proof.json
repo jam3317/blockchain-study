@@ -1,0 +1,91 @@
+{
+ "title": "getProof",
+ "subtitle": "잎에서 루트까지 올라가며 층마다 '짝꿍' 하나와 그 짝꿍이 왼쪽인지를 기록한다. 그 목록이 머클 증명.",
+ "lanes": [
+  [
+   "testProof.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "testUtil.js",
+   "채점 도구",
+   "gray"
+  ]
+ ],
+ "active": 1,
+ "active_label": "getProof",
+ "sections": [
+  {
+   "title": "getProof(2) · 잎 [A, B, C, D, E]에서 C 증명",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getProof(2)",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "층 0: index 2 (짝수 → 내가 왼쪽)",
+     "짝꿍 = index 3 = D → { data: D, left: false }"
+    ],
+    [
+     "note",
+     1,
+     "층 1: [AB, CD, E], index 1 (홀수 → 내가 오른쪽)",
+     "짝꿍 = index 0 = AB → { data: AB, left: true }"
+    ],
+    [
+     "note",
+     1,
+     "층 2: [ABCD, E], index 0",
+     "짝꿍 = E → { data: E, left: false }"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "proof",
+     "[D 오른쪽, AB 왼쪽, E 오른쪽]"
+    ]
+   ]
+  },
+  {
+   "title": "채점 (진짜 SHA-256으로)",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "hashProof('C', proof)",
+     "C부터 proof대로 합쳐 루트 계산"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "계산한 루트",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "=== 'eb100814…ace526' ?",
+     "✔ 잎 10개 모두 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "const isLeft = index % 2 === 0; const pair = isLeft ? index + 1 : index - 1; if (pair < layer.length) proof.push({ data: layer[pair], left: !isLeft }); index = Math.floor(index / 2);"
+}

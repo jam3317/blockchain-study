@@ -1,0 +1,99 @@
+{
+ "title": "getRoot",
+ "subtitle": "한 층을 두 개씩 묶어 위층을 만들고, 층에 하나만 남을 때까지 반복한다. 남은 하나가 머클 루트.",
+ "lanes": [
+  [
+   "testLayers.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "concat",
+   "test가 넘긴 합치기 함수",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "getRoot",
+ "sections": [
+  {
+   "title": "getRoot · 잎 [A, B, C, D]",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getRoot()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "layer = [A, B, C, D]",
+     "길이 4 > 1 → 계속"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "concat(A, B), concat(C, D)",
+     "두 개씩"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "[AB, CD]",
+     "새 층"
+    ],
+    [
+     "note",
+     1,
+     "layer = [AB, CD]",
+     "길이 2 > 1 → 계속"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "concat(AB, CD)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "[ABCD]",
+     "길이 1 → 멈춤"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "layer[0]",
+     "Hash(Hash(A + B) + Hash(C + D))"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "잎 1·2·4·8개 모두 맞는 루트 ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "while (layer.length > 1) { const next = []; for (let i = 0; i < layer.length; i += 2) next.push(concat(layer[i], layer[i+1])); layer = next; }"
+}

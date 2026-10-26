@@ -1,0 +1,98 @@
+{
+ "title": "getRoot",
+ "subtitle": "짝이 없는 마지막 원소는 합치지 않고 그대로 위층으로 올린다.",
+ "lanes": [
+  [
+   "testOdd.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "concat",
+   "test가 넘긴 합치기 함수",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "getRoot",
+ "sections": [
+  {
+   "title": "getRoot · 잎 [A, B, C, D, E]",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getRoot()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "concat(A, B), concat(C, D)",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "E는 짝(right)이 undefined",
+     "합치지 않고 그대로 올림"
+    ],
+    [
+     "note",
+     1,
+     "layer = [AB, CD, E]",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "concat(AB, CD)",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "E는 또 짝이 없음 → 그대로",
+     "layer = [ABCD, E]"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "concat(ABCD, E)",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "루트",
+     "Hash(Hash(Hash(A + B) + Hash(C + D)) + E)"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "잎 1·2·3·4·5·7개 루트 ?",
+     "✔ 6개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "next.push(right === undefined ? left : this.concat(left, right));"
+}

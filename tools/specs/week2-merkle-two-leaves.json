@@ -1,0 +1,86 @@
+{
+ "title": "getRoot",
+ "subtitle": "MerkleTree가 잎 배열과 합치기 함수(concat)를 받아 두고 → getRoot()가 첫 번째와 두 번째 잎을 합친다.",
+ "lanes": [
+  [
+   "testTwo.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "concat",
+   "test가 넘긴 합치기 함수",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "getRoot",
+ "sections": [
+  {
+   "title": "만들기",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "new MerkleTree(['A','B'], concat)",
+     "this.leaves, this.concat에 저장"
+    ]
+   ]
+  },
+  {
+   "title": "getRoot 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "merkleTree.getRoot()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "concat('A', 'B')",
+     "leaves[0], leaves[1]"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "'Hash(A + B)'",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "'Hash(A + B)'",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "=== 'Hash(A + B)' ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "getRoot() { return this.concat(this.leaves[0], this.leaves[1]); }"
+}

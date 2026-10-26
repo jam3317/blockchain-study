@@ -1,0 +1,86 @@
+{
+ "title": "verifyProof",
+ "subtitle": "잎(node)부터 proof를 하나씩 합쳐 루트를 직접 만들어 보고 → 진짜 루트와 같은지 비교한다.",
+ "lanes": [
+  [
+   "testVerify.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "verify.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "concat",
+   "test가 넘긴 합치기 함수",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "verifyProof",
+ "sections": [
+  {
+   "title": "verifyProof · C 증명",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "verify(proof, 'C', root, concat)",
+     "proof = [D 오른쪽, AB 왼쪽, E 오른쪽]"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "concat(C, D)",
+     "D는 오른쪽 → 내가 앞"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "concat(AB, CD)",
+     "AB는 왼쪽 → AB가 앞"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "concat(ABCD, E)",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "만든 값 === root ?",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "true",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "조작된 증명",
+   "color": "pink",
+   "steps": [
+    [
+     "self",
+     0,
+     "다른 잎 / 다른 루트 / left 뒤집기 / 해시 바꾸기 → false ?",
+     "✔ 하나라도 다르면 루트가 달라져서 false"
+    ]
+   ]
+  }
+ ],
+ "footer": "for (const step of proof) data = step.left ? concat(step.data, data) : concat(data, step.data); return data === root;"
+}
