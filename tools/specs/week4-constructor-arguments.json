@@ -1,0 +1,79 @@
+{
+ "title": "constructor",
+ "subtitle": "배포할 때 넘긴 값(num)이 constructor의 _x로 들어와 상태 변수 x에 저장된다. constructor는 배포 때 한 번만 실행된다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Contract.deploy(num)",
+     "num = 0~999 무작위"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor(uint _x)",
+     "_x = num"
+    ],
+    [
+     "note",
+     2,
+     "x = _x;",
+     "밑줄(_)은 상태 변수 x와 이름이 겹치지 않게"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "callStatic.x()",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "num",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "x === num ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor(uint _x) { x = _x; }"
+}

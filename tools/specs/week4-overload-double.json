@@ -1,0 +1,73 @@
+{
+ "title": "double (overload)",
+ "subtitle": "이름이 같고 매개변수가 다른 double 두 개. 두 인자짜리는 한 인자짜리를 안에서 불러 (x*2, y*2) 튜플로 돌려준다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "double(2, 4)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "callStatic['double(uint256,uint256)'](2, 4)",
+     "오버로드는 시그니처로 골라 부름"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "double(uint x, uint y)",
+     ""
+    ],
+    [
+     "call",
+     2,
+     2,
+     "double(x), double(y)",
+     "public이라 내부에서 호출 가능"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "[4, 8]",
+     "튜플 → 배열"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "result[0] === 4, result[1] === 8 ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function double(uint x, uint y) external pure returns(uint, uint) { return (double(x), double(y)); }"
+}

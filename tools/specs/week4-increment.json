@@ -1,0 +1,86 @@
+{
+ "title": "increment",
+ "subtitle": "external 함수 increment()를 거래로 호출할 때마다 상태 변수 x가 1씩 늘어난다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "배포 (x = 0)",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Contract.deploy(0)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "increment() 두 번",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.increment()",
+     "거래 (상태를 바꿈)"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "x++",
+     "x: 0 → 1"
+    ],
+    [
+     "call",
+     0,
+     1,
+     "contract.increment()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "x++",
+     "x: 1 → 2"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "0 → 1 → 2 ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function increment() external { x++; }"
+}
