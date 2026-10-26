@@ -1,0 +1,116 @@
+{
+ "title": "addBlock",
+ "subtitle": "addBlock이 마지막 블록의 해시를 새 블록의 previousHash로 넣고 → toHash()는 data + previousHash를 함께 해시한다.",
+ "lanes": [
+  [
+   "linkingTests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Blockchain.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Block.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "crypto-js",
+   "SHA256",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "addBlock",
+ "sections": [
+  {
+   "title": "addBlock(block1)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "addBlock(block1)",
+     "앞에 genesisBlock이 이미 있음"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "lastBlock.toHash()",
+     "chain의 마지막 = genesisBlock"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "SHA256(this.data + this.previousHash)",
+     "앞 블록 내용 + 그 앞 해시"
+    ],
+    [
+     "ret",
+     3,
+     1,
+     "해시 H",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "block1.previousHash = H",
+     "새 블록에 앞 블록 해시를 적어 둠"
+    ],
+    [
+     "note",
+     1,
+     "this.chain.push(block1)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점 1",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "block1.previousHash === genesisBlock.toHash() ?",
+     "✔ 통과"
+    ]
+   ]
+  },
+  {
+   "title": "채점 2 · genesisBlock.data = 10 으로 바꾸면",
+   "color": "pink",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "genesisBlock.toHash()",
+     "data가 바뀜"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "새 해시",
+     "이전 해시와 다름"
+    ],
+    [
+     "self",
+     0,
+     "해시가 바뀌었나 ?",
+     "✔ 앞 블록이 바뀌면 연결이 끊긴다"
+    ]
+   ]
+  }
+ ],
+ "footer": "addBlock(block) { block.previousHash = this.chain[this.chain.length - 1].toHash(); this.chain.push(block); }"
+}

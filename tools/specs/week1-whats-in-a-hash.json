@@ -1,0 +1,111 @@
+{
+ "title": "Block",
+ "subtitle": "new Block(data)가 data를 저장하고 → toHash()가 그 data를 해시한다. 같은 data면 같은 해시가 나온다.",
+ "lanes": [
+  [
+   "blockSHATest.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Block.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "crypto-js",
+   "SHA256 라이브러리",
+   "teal"
+  ],
+  [
+   "faker",
+   "가짜 데이터 라이브러리",
+   "gray"
+  ]
+ ],
+ "active": 1,
+ "active_label": "Block",
+ "sections": [
+  {
+   "title": "테스트 1 · data 저장",
+   "color": "blue",
+   "steps": [
+    [
+     "call",
+     0,
+     3,
+     "faker.name.findName()",
+     "무작위 이름"
+    ],
+    [
+     "ret",
+     3,
+     0,
+     "'Ms. Jane Doe' 같은 이름",
+     ""
+    ],
+    [
+     "call",
+     0,
+     1,
+     "new Block(randomName)",
+     "constructor(data)"
+    ],
+    [
+     "note",
+     1,
+     "this.data = data",
+     "받은 값을 블록에 저장"
+    ],
+    [
+     "self",
+     0,
+     "block.data === randomName ?",
+     "✔ 통과"
+    ]
+   ]
+  },
+  {
+   "title": "테스트 2 · data 해시",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "new Block(randomEmail).toHash()",
+     "무작위 이메일"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "SHA256(this.data)",
+     "블록 내용을 해시"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "해시",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "return 해시",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "SHA256(randomEmail) === 내 해시 ?",
+     "✔ 같음 → 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor(data) { this.data = data; }  toHash() { return SHA256(this.data); }"
+}

@@ -1,0 +1,92 @@
+{
+ "title": "addBlock",
+ "subtitle": "blockchain.addBlock(block)이 받은 블록을 chain 배열 끝에 붙인다. 제네시스 + 2개 = 3개.",
+ "lanes": [
+  [
+   "addingBlocksTest.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Blockchain.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "chain",
+   "Blockchain 안의 배열",
+   "purple"
+  ]
+ ],
+ "active": 1,
+ "active_label": "addBlock",
+ "sections": [
+  {
+   "title": "준비",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "new Blockchain()",
+     "chain: [제네시스]"
+    ],
+    [
+     "self",
+     0,
+     "typeof blockchain.addBlock === 'function' ?",
+     "✔ 함수가 있음"
+    ]
+   ]
+  },
+  {
+   "title": "addBlock 실행 (2번)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "addBlock(block1)",
+     "new Block(\"Some data\")"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "this.chain.push(block)",
+     "chain: [제네시스, block1]"
+    ],
+    [
+     "call",
+     0,
+     1,
+     "addBlock(block2)",
+     "new Block(\"Some other data\")"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "this.chain.push(block)",
+     "chain: [제네시스, block1, block2]"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "chain.length === 3, block1·block2가 들어 있나 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "addBlock(block) { this.chain.push(block); }"
+}

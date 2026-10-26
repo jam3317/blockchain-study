@@ -1,0 +1,110 @@
+{
+ "title": "isValid",
+ "subtitle": "isValid가 블록을 하나씩 보며 '내 previousHash === 앞 블록의 지금 해시'인지 확인한다. 하나라도 다르면 false.",
+ "lanes": [
+  [
+   "validationTests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Blockchain.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Block.js",
+   "linking-blocks 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "isValid",
+ "sections": [
+  {
+   "title": "준비",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "addBlock × 3",
+     "Dan, Peter, James → 블록 4개"
+    ]
+   ]
+  },
+  {
+   "title": "isValid 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "blockchain.isValid()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "for (i = 1; i < chain.length; i++)",
+     "1번 블록부터 끝까지"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "chain[i - 1].toHash()",
+     "앞 블록 해시를 지금 다시 계산"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "해시",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "chain[i].previousHash와 비교",
+     "toString()으로 바꿔서 비교"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "return true / false",
+     "하나라도 다르면 바로 false"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "그대로 두면 → true ?",
+     "✔"
+    ],
+    [
+     "self",
+     0,
+     "chain[1].previousHash를 바꾸면 → false ?",
+     "✔"
+    ],
+    [
+     "self",
+     0,
+     "chain[0].data를 바꾸면 → false ?",
+     "✔ 앞 블록 해시가 달라져서 들킴"
+    ]
+   ]
+  }
+ ],
+ "footer": "if (chain[i].previousHash.toString() !== chain[i - 1].toHash().toString()) return false;"
+}

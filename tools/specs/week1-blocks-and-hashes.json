@@ -1,0 +1,86 @@
+{
+ "title": "toHash",
+ "subtitle": "test.js가 Block을 만들고 toHash()를 부르면 → SHA256 해시(16진수 64글자)를 돌려준다.",
+ "lanes": [
+  [
+   "hashTest.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Block.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "crypto-js",
+   "SHA256 라이브러리",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "toHash",
+ "sections": [
+  {
+   "title": "블록 만들기",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "new Block()",
+     "빈 블록 객체"
+    ]
+   ]
+  },
+  {
+   "title": "toHash 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "newBlock.toHash()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "SHA256(\"Hello, blockchain!\")",
+     "아무 문자열이나 OK"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "해시",
+     "e4855411…f15ae913"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "return 해시",
+     "WordArray 객체 (문자열로 바꾸면 64글자)"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "/^[0-9A-F]{64}$/i.test(해시) ?",
+     "✔ 16진수 64글자 → 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "class Block { toHash() { return SHA256(\"Hello, blockchain!\"); } }"
+}

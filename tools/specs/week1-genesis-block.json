@@ -1,0 +1,79 @@
+{
+ "title": "Blockchain",
+ "subtitle": "new Blockchain()을 만들 때 constructor가 첫 블록(제네시스 블록)을 만들어 chain 배열에 넣는다.",
+ "lanes": [
+  [
+   "blockchainTest.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Blockchain.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Block.js",
+   "whats-in-a-hash 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "Blockchain",
+ "sections": [
+  {
+   "title": "Blockchain 만들기",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "new Blockchain()",
+     "constructor 실행"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "new Block(\"Genesis Block\")",
+     "첫 블록"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "Block 객체",
+     "{ data: 'Genesis Block' }"
+    ],
+    [
+     "note",
+     1,
+     "this.chain = [제네시스 블록]",
+     "배열에 담아 둠"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "blockchain 객체",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "chain[0]이 있고, Block의 인스턴스인가 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor() { this.chain = [new Block(\"Genesis Block\")]; }"
+}
