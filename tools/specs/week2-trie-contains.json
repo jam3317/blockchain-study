@@ -1,0 +1,114 @@
+{
+ "title": "contains",
+ "subtitle": "contains(word)가 글자를 따라 내려가다 길이 끊기면 false, 끝까지 가면 그 노드의 isWord를 돌려준다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Trie.js",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 1,
+ "active_label": "contains",
+ "sections": [
+  {
+   "title": "트리에 'hey'만 있을 때",
+   "color": "gray",
+   "steps": [
+    [
+     "note",
+     1,
+     "root → h → e → y(isWord)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "contains('hey')",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contains('hey')",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "h → e → y 도착",
+     "y.isWord = true"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "true",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "contains('he')",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contains('he')",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "h → e 도착",
+     "e.isWord = false (단어 중간일 뿐)"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "false",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "contains('hi') / contains('heya')",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contains('hi')",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "h 다음에 i가 없음",
+     "길이 끊김"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "false",
+     "heya도 y 다음 a가 없어서 false"
+    ]
+   ]
+  }
+ ],
+ "footer": "for (const letter of word) { node = node.children[letter]; if (!node) return false; } return node.isWord;"
+}

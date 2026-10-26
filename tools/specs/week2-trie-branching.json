@@ -1,0 +1,85 @@
+{
+ "title": "insert",
+ "subtitle": "이미 있는 글자 노드는 다시 만들지 않고 그대로 따라 내려간다. 그래서 공통 앞부분(he…)을 여러 단어가 함께 쓴다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Trie.js",
+   "trie-insert와 같음",
+   "orange"
+  ],
+  [
+   "TrieNode.js",
+   "trie-node 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "insert",
+ "sections": [
+  {
+   "title": "insert('helipad'), insert('hello'), insert('hermit')",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "insert('helipad')",
+     "h-e-l-i-p-a-d 전부 새로 만듦"
+    ],
+    [
+     "call",
+     0,
+     1,
+     "insert('hello')",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "h, e, l은 이미 있음 → 따라가기만",
+     "l 아래에 새 가지 l-o"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "new TrieNode('l'), new TrieNode('o')",
+     ""
+    ],
+    [
+     "call",
+     0,
+     1,
+     "insert('hermit')",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "h, e는 있음 → e 아래에 새 가지 r",
+     "e의 자식: l, r (두 갈래)"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "세 단어 모두 마지막 노드 isWord true ?",
+     "✔ 6개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "if (!node.children[letter]) node.children[letter] = new TrieNode(letter);   // 있으면 만들지 않고 그대로 사용"
+}

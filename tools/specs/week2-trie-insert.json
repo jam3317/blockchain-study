@@ -1,0 +1,91 @@
+{
+ "title": "insert",
+ "subtitle": "insert('HEY')가 root부터 글자마다 자식 노드를 만들어 이어 붙이고, 마지막 글자 노드에 isWord = true를 표시한다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Trie.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "TrieNode.js",
+   "trie-node 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "insert",
+ "sections": [
+  {
+   "title": "insert('HEY')",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "trie.insert('HEY')",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "node = root",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "new TrieNode('H')",
+     "root.children['H']가 없어서 만듦"
+    ],
+    [
+     "note",
+     1,
+     "node = root.children['H']",
+     "한 칸 내려감"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "new TrieNode('E')",
+     "H.children['E']"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "new TrieNode('Y')",
+     "E.children['Y']"
+    ],
+    [
+     "note",
+     1,
+     "node.isWord = true",
+     "마지막 글자 Y만 단어 끝"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "root → H → E → Y 연결, Y만 isWord true ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "for (const letter of word) { if (!node.children[letter]) node.children[letter] = new TrieNode(letter); node = node.children[letter]; } node.isWord = true;"
+}
