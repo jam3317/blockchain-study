@@ -80,3 +80,40 @@ npx mocha week3/block-number/test.js --exit   # ganache를 쓰는 week3부터는
 | 48 | Intro to Ethers.js | [Retrieve the Balance](./week3/ethers-balance) | getBalance, BigNumber |
 | 49 | Intro to Ethers.js | [Donating to Charities](./week3/ethers-donate) | for…of + await, tx.wait |
 | 50 | Where is the Ether? | [Where is the Ether?](./week3/where-is-the-ether) | getBlockWithTransactions, 거래 추적 |
+
+### Week 4
+
+Solidity 문제는 `sh tools/sol-test.sh week4/<폴더>`로 실행한다 (Hardhat).
+
+| # | 과제 | 단계 | 핵심 개념 |
+|---|------|------|-----------|
+| 51 | Data Types | [Booleans](./week4/booleans) | 상태 변수, public getter |
+| 52 | Data Types | [Unsigned Integers](./week4/unsigned-integers) | uint8/16/256, 범위 |
+| 53 | Data Types | [Signed Integers](./week4/signed-integers) | int, 형 변환 |
+| 54 | Data Types | [String Literals](./week4/string-literals) | bytes32 vs string |
+| 55 | Data Types | [Enum Type](./week4/enum-type) | enum |
+| 56 | Functions | [Arguments](./week4/constructor-arguments) | constructor 인자, shadowing |
+| 57 | Functions | [Increment](./week4/increment) | external, 거래 |
+| 58 | Functions | [View Addition](./week4/view-addition) | view, returns |
+| 59 | Functions | [Pure Double](./week4/pure-double) | pure |
+| 60 | Functions | [Overloading Functions](./week4/overload-double) | 오버로딩, 튜플 |
+| 61 | Contracts with ethers.js | [Contracts](./week4/contract-get-value) | ABI, Contract 객체 |
+| 62 | Contracts with ethers.js | [Transactions](./week4/contract-set-value) | Signer, 쓰기 거래 |
+| 63 | Contracts with ethers.js | [Multiple Arguments](./week4/contract-transfer) | mapping, msg.sender, require |
+| 64 | Contracts with ethers.js | [Signer](./week4/contract-signer) | connect |
+| 65 | Contracts with ethers.js | [Value Transfer](./week4/contract-deposit) | payable, overrides { value } |
+| 66 | Sending Ether | [Storing Owner](./week4/storing-owner) | address, msg.sender |
+| 67 | Sending Ether | [Receive Ether](./week4/receive-ether) | receive() |
+| 68 | Sending Ether | [Transferring Funds](./week4/transfer-tips) | call{value} |
+| 69 | Sending Ether | [Charity](./week4/charity) | address(this).balance |
+| 70 | Sending Ether | [Self Destruct](./week4/self-destruct) | selfdestruct, Cancun |
+| 71 | Learning Revert | [Constructor Revert](./week4/constructor-revert) | require, revert |
+| 72 | Learning Revert | [Only Owner](./week4/owner-withdrawal) | 접근 제어 |
+| 73 | Learning Revert | [Function Modifiers](./week4/only-owner-modifier) | modifier, _ |
+| 74 | Sending Data | [Interfaces](./week4/interface-alert) | interface |
+| 75 | Sending Data | [Function Signature](./week4/function-signature) | 함수 선택자 |
+| 76 | Sending Data | [With Signature](./week4/encode-with-signature) | abi.encodeWithSignature |
+| 77 | Sending Data | [Taking Calldata](./week4/pass-calldata) | calldata 전달 |
+| 78 | Sending Data | [Fallback](./week4/fallback) | fallback() |
+| 79 | Sum and Average | [Sum and Average](./week4/sum-and-average) | 정수 나눗셈, 이름 붙은 반환값 |
+| 80 | Countdown | [Countdown](./week4/countdown) | 카운터 + selfdestruct |
