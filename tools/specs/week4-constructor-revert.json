@@ -1,0 +1,88 @@
+{
+ "title": "require",
+ "subtitle": "payable constructor가 msg.value를 확인해서 1 ether보다 적으면 require로 배포 자체를 되돌린다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "0.5 ETH로 배포",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Contract.deploy({ value: 0.5 ETH })",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor() payable",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(msg.value >= 1 ether) ✗",
+     "revert → 배포 실패"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "에러",
+     "✔ 에러가 나야 통과"
+    ]
+   ]
+  },
+  {
+   "title": "1 ETH / 2 ETH로 배포",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Contract.deploy({ value: 1 ETH })",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor() payable",
+     "require ✔"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "배포 성공",
+     "✔ 2 ETH도 성공"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor() payable { require(msg.value >= 1 ether, \"Deposit at least 1 ether\"); }"
+}

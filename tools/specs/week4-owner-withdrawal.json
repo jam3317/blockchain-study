@@ -1,0 +1,93 @@
+{
+ "title": "withdraw",
+ "subtitle": "owner만 withdraw()를 부를 수 있다. 다른 계정이 부르면 require로 revert, owner면 잔액 전부를 owner에게 보낸다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "계정 1이 withdraw()",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.connect(signer1).withdraw()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "withdraw()",
+     "msg.sender = 계정 1"
+    ],
+    [
+     "note",
+     2,
+     "require(msg.sender == owner) ✗",
+     "revert"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "에러",
+     "✔"
+    ]
+   ]
+  },
+  {
+   "title": "owner가 withdraw()",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.connect(owner).withdraw({ gasPrice: 2 gwei })",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "withdraw()",
+     "require ✔"
+    ],
+    [
+     "note",
+     2,
+     "owner.call{ value: address(this).balance }(\"\")",
+     "2 ETH 전부"
+    ],
+    [
+     "self",
+     0,
+     "후 잔액 == 전 잔액 − 가스비 + 2 ETH ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "require(msg.sender == owner); (bool success, ) = owner.call{ value: address(this).balance }(\"\");"
+}

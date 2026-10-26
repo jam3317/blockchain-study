@@ -1,0 +1,94 @@
+{
+ "title": "modifier onlyOwner",
+ "subtitle": "modifier는 함수 몸체 앞뒤에 끼워 넣는 코드. require로 owner인지 확인한 뒤 _ 자리에서 원래 함수 몸체가 실행된다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "다른 계정이 setA(1)",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.connect(other).setA(1)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "setA(1) onlyOwner",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "modifier: require(msg.sender == owner) ✗",
+     "_ 까지 가지 못하고 revert"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "에러",
+     "✔ setB, setC도 같음"
+    ]
+   ]
+  },
+  {
+   "title": "owner가 setA(1)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.setA(1)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "setA(1) onlyOwner",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require ✔ → _; → configA = 1",
+     "_ 자리에서 함수 몸체 실행"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "성공",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "modifier onlyOwner { require(msg.sender == owner, \"Only the owner can call this\"); _; }"
+}
