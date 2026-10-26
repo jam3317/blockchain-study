@@ -7,6 +7,7 @@
 ```bash
 npm install
 npx mocha week1/find-favorite-color/test.js   # 문제 폴더 이름만 바꿔서 실행
+npx mocha week3/block-number/test.js --exit   # ganache를 쓰는 week3부터는 --exit를 붙인다
 ```
 
 ## 실행 도구

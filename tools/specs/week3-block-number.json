@@ -1,0 +1,101 @@
+{
+ "title": "getBlockNumber",
+ "subtitle": "provider.send()로 JSON-RPC 요청 { method: 'eth_blockNumber' }을 보내고 → 응답의 result(16진수 블록 번호)를 돌려준다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "getBlockNumber.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "provider.js",
+   "ganache 가짜 노드",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "getBlockNumber",
+ "sections": [
+  {
+   "title": "처음 (블록 0)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getBlockNumber()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "send({ jsonrpc: '2.0', id: 1, method: 'eth_blockNumber' })",
+     "JSON-RPC 요청"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "{ id: 1, jsonrpc: '2.0', result: '0x0' }",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "response.result",
+     "'0x0'"
+    ],
+    [
+     "self",
+     0,
+     "'0x0' == 0 ?",
+     "✔ 느슨한 비교라 16진수 문자열도 숫자로 비교됨"
+    ]
+   ]
+  },
+  {
+   "title": "블록 하나 채굴 후",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "send({ method: 'evm_mine' })",
+     "테스트가 블록을 하나 만듦"
+    ],
+    [
+     "call",
+     0,
+     1,
+     "getBlockNumber()",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "'0x1'",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "'0x1' == 1 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "const response = await provider.send({ jsonrpc: \"2.0\", id: 1, method: \"eth_blockNumber\" }); return response.result;"
+}

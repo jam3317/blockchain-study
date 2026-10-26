@@ -1,0 +1,73 @@
+{
+ "title": "getBalance",
+ "subtitle": "eth_getBalance에 [주소, 'latest']를 넘겨 그 주소의 최신 잔액(wei, 16진수)을 받는다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "getBalance.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "provider.js",
+   "ganache 가짜 노드",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "getBalance",
+ "sections": [
+  {
+   "title": "getBalance 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getBalance('0x5409ED…A631')",
+     "테스트 계정 (10 ETH로 시작)"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "send({ method: 'eth_getBalance', params: [address, 'latest'] })",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "result: '0x8ac7230489e80000'",
+     "= 10,000,000,000,000,000,000 wei"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "response.result",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "== 0x8ac7230489e80000 ?",
+     "✔ 10 ETH = 10¹⁹ wei"
+    ]
+   ]
+  }
+ ],
+ "footer": "params: [address, \"latest\"]   // 주소, 기준 블록"
+}

@@ -1,0 +1,94 @@
+{
+ "title": "getNonce",
+ "subtitle": "계정의 nonce = 그 주소가 보낸 거래 수. eth_getTransactionCount로 조회한다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "getNonce.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "provider.js",
+   "ganache 가짜 노드",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "getNonce",
+ "sections": [
+  {
+   "title": "거래 보내기 전",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getNonce(ADDRESS)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "send({ method: 'eth_getTransactionCount', params: [address, 'latest'] })",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "'0x0'",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "== 0 ?",
+     "✔"
+    ]
+   ]
+  },
+  {
+   "title": "거래 1건 보낸 후",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "send({ method: 'eth_sendTransaction', … })",
+     "ADDRESS → 0xd46e…4567, 1 wei"
+    ],
+    [
+     "call",
+     0,
+     1,
+     "getNonce(ADDRESS)",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "'0x1'",
+     "보낸 거래 수가 1로 늘어남"
+    ],
+    [
+     "self",
+     0,
+     "== 1 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "method: \"eth_getTransactionCount\", params: [address, \"latest\"]"
+}

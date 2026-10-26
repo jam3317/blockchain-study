@@ -1,0 +1,85 @@
+{
+ "title": "getTotalBalance",
+ "subtitle": "주소 5개의 eth_getBalance 요청을 배열 하나로 묶어(batch) 한 번에 보내고 → 결과를 parseInt로 숫자로 바꿔 더한다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "getTotalBalance.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "provider.js",
+   "ganache 가짜 노드",
+   "teal"
+  ]
+ ],
+ "active": 1,
+ "active_label": "getTotalBalance",
+ "sections": [
+  {
+   "title": "getTotalBalance 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getTotalBalance([주소 5개])",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "addresses.map → 요청 5개",
+     "{ id: 0, method: 'eth_getBalance', params: [주소, 'latest'] } …"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "send([요청0, 요청1, … 요청4])",
+     "배열 하나 = HTTP 한 번"
+    ],
+    [
+     "ret",
+     2,
+     1,
+     "[응답0, … 응답4]",
+     "id로 어떤 요청의 답인지 구분"
+    ],
+    [
+     "note",
+     1,
+     "reduce(total + parseInt(result))",
+     "0.1 + 0.2 + 0.3 + 0.4 + 0.5 ETH"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "1500000000000000000",
+     "= 1.5 ETH (wei)"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "== '15'.padEnd(19, '0') ?",
+     "✔ '1500000000000000000'"
+    ]
+   ]
+  }
+ ],
+ "footer": "const responses = await provider.send(requests); return responses.reduce((t, r) => t + parseInt(r.result), 0);"
+}
