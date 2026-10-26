@@ -1,0 +1,97 @@
+{
+ "title": "setMessage",
+ "subtitle": "contract.connect(signer)는 다른 계정에 연결된 새 컨트랙트 객체를 돌려준다. 그 계정으로 거래를 보내면 msg.sender가 바뀐다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Contract.sol",
+   "주어진 컨트랙트",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "setMessage",
+ "sections": [
+  {
+   "title": "배포 (계정 0 = owner)",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "Contract.deploy()",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "constructor()",
+     "owner = 계정 0"
+    ]
+   ]
+  },
+  {
+   "title": "setMessage 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "setMessage(contract, getSigner(1))",
+     "계정 1"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "contract.connect(signer).modify('Hello…')",
+     "계정 1이 서명"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "modify(_message)",
+     "msg.sender = 계정 1"
+    ],
+    [
+     "note",
+     3,
+     "require(msg.sender != owner) ✔ → message 저장",
+     "owner(계정 0)가 보냈다면 revert"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "message !== '' ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "return contract.connect(signer).modify(\"Hello from another signer!\");"
+}

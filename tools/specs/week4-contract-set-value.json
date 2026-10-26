@@ -1,0 +1,92 @@
+{
+ "title": "setValue",
+ "subtitle": "상태를 바꾸는 함수(modify)를 부르면 ethers가 연결된 Signer로 거래를 서명·전송한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "주어진 컨트랙트",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "setValue",
+ "sections": [
+  {
+   "title": "setValue 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "setValue(contract)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "contract.modify(42)",
+     "Signer(계정 0)가 서명한 거래"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "modify(42)",
+     "value = 42"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "거래 Promise",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     3,
+     "contract.value()",
+     ""
+    ],
+    [
+     "ret",
+     3,
+     0,
+     "42",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "value.gt(0) ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function setValue(contract) { return contract.modify(42); }"
+}

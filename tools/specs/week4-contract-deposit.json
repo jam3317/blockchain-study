@@ -1,0 +1,85 @@
+{
+ "title": "deposit",
+ "subtitle": "payable 함수에 이더를 함께 보내려면 마지막 인자로 { value } (overrides 객체)를 넘긴다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Contract.sol",
+   "주어진 컨트랙트",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "deposit",
+ "sections": [
+  {
+   "title": "deposit 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "deposit(contract)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "contract.deposit({ value: parseEther('1') })",
+     "거래에 1 ETH를 실어 보냄"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "deposit() payable",
+     "msg.value = 1 ETH → 컨트랙트 잔액으로"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "getBalance(contract.address)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "1 ETH",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "balance ≥ 1 ETH ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "return contract.deposit({ value: ethers.utils.parseEther(\"1\") });"
+}

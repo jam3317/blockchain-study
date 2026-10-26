@@ -7,7 +7,8 @@ const path = require("path");
 const stage = process.env.STAGE || "week4";
 
 module.exports = {
-    solidity: "0.8.20",
+    // 문제마다 pragma 버전이 달라서 컴파일러를 여러 개 둔다.
+    solidity: { compilers: [{ version: "0.8.20" }, { version: "0.7.5" }] },
     paths: {
         sources: path.join(__dirname, stage),
         tests: path.join(__dirname, stage),

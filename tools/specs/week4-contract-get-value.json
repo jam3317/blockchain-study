@@ -1,0 +1,105 @@
+{
+ "title": "getValue",
+ "subtitle": "ethers의 Contract 객체는 ABI를 보고 컨트랙트 함수 이름의 JS 메서드를 자동으로 만든다. contract.value()로 public 변수를 읽는다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "주어진 컨트랙트",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "getValue",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "Contract.deploy(random)",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "constructor(_value)",
+     "value = random"
+    ]
+   ]
+  },
+  {
+   "title": "getValue 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "getValue(contract)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "contract.value()",
+     "ABI로 만들어진 메서드 (읽기 호출)"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "value()",
+     ""
+    ],
+    [
+     "ret",
+     3,
+     1,
+     "BigNumber(random)",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "Promise → random",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "value == random ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function getValue(contract) { return contract.value(); }"
+}

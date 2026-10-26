@@ -1,0 +1,97 @@
+{
+ "title": "transfer",
+ "subtitle": "인자가 여러 개인 함수도 그대로 넘긴다. 배포자(msg.sender)가 가진 토큰 1000개 중 250개를 친구에게 보낸다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Token.sol",
+   "주어진 컨트랙트",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "transfer",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "Token.deploy()",
+     "계정 0이 배포"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "constructor()",
+     "balances[계정0] = 1000"
+    ]
+   ]
+  },
+  {
+   "title": "transfer 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "transfer(contract, friend)",
+     "friend = 계정 2"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "contract.transfer(friend, 250)",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "transfer(beneficiary, amount)",
+     "msg.sender = 계정 0"
+    ],
+    [
+     "note",
+     3,
+     "require(잔액 ≥ 250) → 친구 +250, 나 −250",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "balances(owner) < 1000, balances(friend) > 0 ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function transfer(contract, friend) { return contract.transfer(friend, 250); }"
+}
