@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "chai": "^6.3.0",
+    "crypto-js": "^4.2.0",
     "ethereum-cryptography": "^1.2.0"
   }
 }

@@ -1,0 +1,111 @@
+{
+ "title": "mine",
+ "subtitle": "test.js가 mine()을 두 번 부르면 → 블록 { id: 0 }, { id: 1 }이 blocks 배열에 차례로 쌓인다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "mempool / blocks",
+   "index.js 안의 배열",
+   "purple"
+  ]
+ ],
+ "active": 1,
+ "sections": [
+  {
+   "title": "첫 번째 mine()",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "mine()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "const block = { id: blocks.length }",
+     "지금 blocks.length = 0 → id 0"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "blocks.push(block)",
+     "{ id: 0 }"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "return (없음)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점 1",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "blocks.length === 1, 마지막 블록 id === 0 ?",
+     "✔ 통과"
+    ]
+   ]
+  },
+  {
+   "title": "두 번째 mine()",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "mine()",
+     ""
+    ],
+    [
+     "note",
+     1,
+     "{ id: blocks.length }",
+     "이제 blocks.length = 1 → id 1"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "blocks.push(block)",
+     "{ id: 1 }"
+    ]
+   ]
+  },
+  {
+   "title": "채점 2",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "blocks.length === 2, 마지막 블록 id === 1 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function mine() { const block = { id: blocks.length }; blocks.push(block); }",
+ "active_label": "mine"
+}

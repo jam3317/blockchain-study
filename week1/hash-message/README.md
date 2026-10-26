@@ -206,7 +206,7 @@ pow(10, public_key, n)                     # 지어낸 서명: 10 → 4가 아�
 
 ```bash
 # 테스트로 채점하기 (바깥 폴더 기준)
-npx mocha hash-message/test.js
+npx mocha week1/hash-message/test.js
 ```
 
 ```
@@ -219,7 +219,7 @@ npx mocha hash-message/test.js
 해시값을 직접 보고 싶을 때:
 
 ```bash
-node -e 'const h = require("./hash-message/hashMessage"); const { toHex } = require("ethereum-cryptography/utils"); console.log(toHex(h("hello world")))'
+node -e 'const h = require("./week1/hash-message/hashMessage"); const { toHex } = require("ethereum-cryptography/utils"); console.log(toHex(h("hello world")))'
 ```
 
 `"hello world"`를 다른 문자열로 바꾸면 해시가 완전히 달라진다.

@@ -1,0 +1,24 @@
+{
+  "title": "getAddress",
+  "subtitle": "test.js가 개인키로 공개키를 만들고 → getAddress가 앞 1바이트 제거 → keccak256 → 마지막 20바이트를 주소로 돌려준다.",
+  "lanes": [["test.js", "출제 · 채점", "blue"], ["getAddress.js", "내가 작성", "orange"], ["keccak", "라이브러리", "teal"], ["secp256k1", "라이브러리", "gray"]],
+  "active": 1,
+  "sections": [
+    {"title": "공개키 준비", "color": "gray", "steps": [
+      ["call", 0, 3, "getPublicKey(PRIVATE_KEY)", "개인키 → 공개키"],
+      ["ret", 3, 0, "공개키", "04385c3a…084f (65바이트, 맨 앞 04)"]
+    ]},
+    {"title": "getAddress 실행", "color": "orange", "active": true, "steps": [
+      ["call", 0, 1, "getAddress(publicKey)", "65바이트 공개키"],
+      ["note", 1, "publicKey.slice(1)", "맨 앞 형식 표시(04) 1바이트 제거 → 64바이트"],
+      ["call", 1, 2, "keccak256(나머지 64바이트)", "x, y 좌표만 해시"],
+      ["ret", 2, 1, "해시", "5beb075b…16bb6031…bd719705 (32바이트)"],
+      ["note", 1, "hash.slice(-20)", "뒤에서 20바이트만 남김"],
+      ["ret", 1, 0, "return 주소", "16bb6031cbf3…bbd719705 (20바이트)"]
+    ]},
+    {"title": "채점", "color": "green", "steps": [
+      ["self", 0, "toHex(주소) === EXPECTED_ADDRESS ?", "✔ 같음 → 통과 (대소문자 무시)"]
+    ]}
+  ],
+  "footer": "function getAddress(publicKey) { const hash = keccak256(publicKey.slice(1)); return hash.slice(-20); }"
+}

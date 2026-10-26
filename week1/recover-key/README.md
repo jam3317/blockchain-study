@@ -155,7 +155,7 @@ assert.equal(toHex(recovered), toHex(publicKey));                    // 4. 둘�
 ## 5. 실행 방법
 
 ```bash
-npx mocha recover-key/test.js
+npx mocha week1/recover-key/test.js
 ```
 
 ```

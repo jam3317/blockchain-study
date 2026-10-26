@@ -1,0 +1,72 @@
+{
+ "title": "addTransaction",
+ "subtitle": "test.js가 거래 하나를 넘기면 → addTransaction이 mempool 배열 끝에 넣는다 → test.js가 mempool을 확인한다.",
+ "lanes": [
+  [
+   "test.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "index.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "mempool / blocks",
+   "index.js 안의 배열",
+   "purple"
+  ]
+ ],
+ "active": 1,
+ "sections": [
+  {
+   "title": "addTransaction 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "addTransaction({ to: 'bob', sender: 'alice' })",
+     "거래 객체 하나"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "mempool.push(transaction)",
+     "배열 맨 뒤에 추가 (Python list.append)"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "return (없음)",
+     "undefined"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "mempool.length === 1 ?",
+     "✔ 1개"
+    ],
+    [
+     "self",
+     0,
+     "mempool[0] === transaction ?",
+     "✔ 같은 객체 → 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function addTransaction(transaction) { mempool.push(transaction); }",
+ "active_label": "addTransaction"
+}

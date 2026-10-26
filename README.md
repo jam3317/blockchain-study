@@ -6,14 +6,14 @@
 
 ```bash
 npm install
-npx mocha find-favorite-color/test.js   # 문제 폴더 이름만 바꿔서 실행
+npx mocha week1/find-favorite-color/test.js   # 문제 폴더 이름만 바꿔서 실행
 ```
 
 ## 문제 목록
 
 | # | 문제 | 핵심 개념 |
 |---|------|-----------|
-| 1 | [Find Favorite Color](./find-favorite-color) | SHA256 해시, 브루트포스, 바이트 ↔ 16진수 |
-| 2 | [Hash Message](./hash-message) | keccak256 해시, 서명 전 단계, keccak256 vs SHA-256 |
-| 3 | [Sign Message](./sign-message) | secp256k1 서명, 복구 비트, 공개키 복구, async/await |
-| 4 | [Recover Key](./recover-key) | recoverPublicKey, 서명에서 공개키 복구, Uint8Array 비교 |
+| 1 | [Find Favorite Color](./week1/find-favorite-color) | SHA256 해시, 브루트포스, 바이트 ↔ 16진수 |
+| 2 | [Hash Message](./week1/hash-message) | keccak256 해시, 서명 전 단계, keccak256 vs SHA-256 |
+| 3 | [Sign Message](./week1/sign-message) | secp256k1 서명, 복구 비트, 공개키 복구, async/await |
+| 4 | [Recover Key](./week1/recover-key) | recoverPublicKey, 서명에서 공개키 복구, Uint8Array 비교 |
