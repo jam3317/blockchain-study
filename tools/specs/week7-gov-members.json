@@ -1,0 +1,74 @@
+{
+ "title": "onlyMember",
+ "subtitle": "constructor에서 받은 주소들과 배포자만 제안하고 투표할 수 있다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Voting.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Voting",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "Voting.deploy([member1, member2])",
+     "owner도 자동 포함"
+    ]
+   ]
+  },
+  {
+   "title": "권한 확인",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "nonmember newProposal / castVote",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "require 실패 → revert",
+     "✔ 에러가 나야 통과"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "member1 newProposal · owner, member2 castVote",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "ProposalCreated · VoteCast 이벤트",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "modifier onlyMember { require(members[msg.sender]); _; }"
+}

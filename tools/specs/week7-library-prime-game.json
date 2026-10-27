@@ -1,0 +1,79 @@
+{
+ "title": "isWinner",
+ "subtitle": "지금 블록 번호(block.number)가 소수면 당첨.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "PrimeGame.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Prime",
+   "배포된 library",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "PrimeGame",
+ "sections": [
+  {
+   "title": "블록 진행",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "evm_mine",
+     "블록을 하나씩 만든다 (3, 4, 5 … 18, 19)"
+    ]
+   ]
+  },
+  {
+   "title": "isWinner()",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "callStatic.isWinner()",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "Prime.isPrime(block.number)",
+     "library 직접 호출"
+    ],
+    [
+     "ret",
+     3,
+     2,
+     "블록 3 → true · 4 → false",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "3, 5, 19 당첨 · 4, 18 꽝",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function isWinner() public view returns (bool) { return Prime.isPrime(block.number); }"
+}

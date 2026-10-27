@@ -1,0 +1,67 @@
+{
+ "title": "castVote",
+ "subtitle": "제안 번호와 찬반(bool)을 받아 yesCount / noCount를 올린다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Voting.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Voting",
+ "sections": [
+  {
+   "title": "세 명이 투표",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "voter1 castVote(0, true)",
+     "yesCount 1"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "voter2 castVote(0, true)",
+     "yesCount 2"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "voter3 castVote(0, false)",
+     "noCount 1"
+    ],
+    [
+     "note",
+     2,
+     "Proposal storage proposal = proposals[id]",
+     "storage라서 원본이 바뀜"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "yes 2 · no 1",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function castVote(uint proposalId, bool support) external   // supports는 예약어!"
+}

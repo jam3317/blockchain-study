@@ -1,0 +1,66 @@
+{
+ "title": "ProposalCreated · VoteCast",
+ "subtitle": "제안 생성과 투표를 이벤트로 알려 화면(UI)이 구독할 수 있게 한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Voting.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Voting",
+ "sections": [
+  {
+   "title": "이벤트",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "newProposal(target, data1)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "emit ProposalCreated(proposals.length)",
+     "push 전 길이 = 새 id"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "castVote(0, false)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "emit VoteCast(0, msg.sender)",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "receipt.events",
+     "args[0]로 proposals 조회 → data 일치 ✔"
+    ]
+   ]
+  }
+ ],
+ "footer": "event ProposalCreated(uint proposalId);   event VoteCast(uint proposalId, address voter);"
+}

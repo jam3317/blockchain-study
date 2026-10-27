@@ -1,0 +1,92 @@
+{
+ "title": "using UIntFunctions for uint",
+ "subtitle": "Game이 배포된 library 주소와 연결(link)되어 participants.isEven()을 부른다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Game.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "UIntFunctions",
+   "배포된 library",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Game",
+ "sections": [
+  {
+   "title": "배포 + link",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     3,
+     "UIntFunctions.deploy()",
+     ""
+    ],
+    [
+     "call",
+     0,
+     1,
+     "getContractFactory(\"Game\", { libraries: { UIntFunctions: 주소 } })",
+     "바이트코드 빈칸에 library 주소를 채움"
+    ]
+   ]
+  },
+  {
+   "title": "constructor(4)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     1,
+     2,
+     "Game.deploy(4)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "participants = 4",
+     "using … for uint"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "_participants.isEven()",
+     "= UIntFunctions.isEven(4)"
+    ],
+    [
+     "ret",
+     3,
+     2,
+     "true",
+     "allowTeams = true"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "participants() 4 · allowTeams() true",
+     "홀수면 false · ✔"
+    ]
+   ]
+  }
+ ],
+ "footer": "using UIntFunctions for uint;   allowTeams = _participants.isEven();"
+}

@@ -1,0 +1,85 @@
+{
+ "title": "10표면 실행",
+ "subtitle": "찬성이 10표가 되는 순간 target에 data를 call로 보내 제안을 실행한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Voting.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Minter",
+   "숨겨진 target",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Voting",
+ "sections": [
+  {
+   "title": "9표",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "signers[0..8] castVote(0, true)",
+     "yesCount 9"
+    ],
+    [
+     "ret",
+     3,
+     0,
+     "minted() → 0",
+     "아직 실행 안 됨 ✔"
+    ]
+   ]
+  },
+  {
+   "title": "10번째 표",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "signers[9] castVote(0, true)",
+     "yesCount 10"
+    ],
+    [
+     "note",
+     2,
+     "executed[0] = true",
+     "두 번 실행 방지"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "target.call(data)",
+     "= mint(250)"
+    ],
+    [
+     "ret",
+     3,
+     0,
+     "minted() → 250",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "if (proposal.yesCount == 10 && !executed[proposalId]) { executed[proposalId] = true; proposal.target.call(proposal.data); }"
+}

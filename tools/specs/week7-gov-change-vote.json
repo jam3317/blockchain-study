@@ -1,0 +1,68 @@
+{
+ "title": "투표 바꾸기",
+ "subtitle": "주소별 이전 표를 기억해 두었다가, 다시 투표하면 이전 표를 빼고 새 표를 더한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Voting.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Voting",
+ "sections": [
+  {
+   "title": "voter1이 세 번 투표",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "castVote(0, false)",
+     "Absent → No · no 1"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "castVote(0, true)",
+     "No → Yes · no 0, yes 1"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "castVote(0, true)",
+     "Yes → Yes · 그대로"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "voter2 castVote(0, false)",
+     "no 1"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "yes 1 · no 1",
+     "제안 1은 따로 셈 ✔"
+    ]
+   ]
+  }
+ ],
+ "footer": "mapping(uint => mapping(address => VoteStates)) voteStates;   enum VoteStates { Absent, Yes, No }"
+}

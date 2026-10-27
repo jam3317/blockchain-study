@@ -1,0 +1,53 @@
+{
+ "title": "dividesEvenly",
+ "subtitle": "y가 x를 나누어떨어지게 하면 true. 다음 단계 isPrime의 재료.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Prime.sol",
+   "내가 작성 (library)",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Prime",
+ "sections": [
+  {
+   "title": "채점",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "dividesEvenly(4, 2) · (16, 4) · (200, 50)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "return x % y == 0",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "true",
+     "(5,2) (22,4) (199,50) → false ✔"
+    ]
+   ]
+  }
+ ],
+ "footer": "function dividesEvenly(uint x, uint y) public pure returns (bool) { return x % y == 0; }"
+}

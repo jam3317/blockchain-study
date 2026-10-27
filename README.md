@@ -188,3 +188,20 @@ Solidity 문제는 `sh tools/sol-test.sh week4/<폴더>`로 실행한다 (Hardha
 | 139 | Build an ERC-20 | [Transfer](./week6/erc20-transfer) | 잔액 이동 |
 | 140 | Build an ERC-20 | [Transfer Event](./week6/erc20-events) | emit Transfer |
 | 141 | ERC-20 Treasure Chest | [Plunder](./week6/erc20-treasure-chest) | IERC20 인터페이스 호출 |
+
+### Week 7
+
+| # | 과제 | 단계 | 핵심 개념 |
+|---|------|------|-----------|
+| 142 | Libraries | [UInt Library](./week7/library-is-even) | library, pure |
+| 143 | Libraries | [Using Library](./week7/library-using) | using for, link |
+| 144 | Libraries | [Console Log](./week7/library-console-log) | hardhat/console.sol |
+| 145 | Libraries | [Base Functions](./week7/library-divides-evenly) | 나머지 연산 |
+| 146 | Libraries | [Is Prime](./week7/library-is-prime) | √x까지 반복 |
+| 147 | Libraries | [Prime Block Winner](./week7/library-prime-game) | block.number |
+| 148 | Basic Governance | [Proposals](./week7/gov-proposals) | struct 배열, calldata |
+| 149 | Basic Governance | [Cast a Vote](./week7/gov-cast-vote) | storage 참조 |
+| 150 | Basic Governance | [Multiple Votes](./week7/gov-change-vote) | enum, 이중 mapping |
+| 151 | Basic Governance | [Events](./week7/gov-events) | ProposalCreated, VoteCast |
+| 152 | Basic Governance | [Voting Members](./week7/gov-members) | 구성원 명단, Sybil |
+| 153 | Basic Governance | [Execute](./week7/gov-execute) | target.call(data) |

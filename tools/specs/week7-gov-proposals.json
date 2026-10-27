@@ -1,0 +1,66 @@
+{
+ "title": "newProposal",
+ "subtitle": "제안(무엇을 어느 주소에 실행할지)을 struct로 만들어 배열에 쌓는다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Voting.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Voting",
+ "sections": [
+  {
+   "title": "제안 만들기",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "note",
+     0,
+     "data = encodeFunctionData(\"mint\", [250])",
+     "target = AddressZero"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "newProposal(target, data)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "proposals.push(Proposal(target, data, 0, 0))",
+     ""
+    ],
+    [
+     "call",
+     0,
+     2,
+     "proposals(0)",
+     "public 배열 getter"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "{ target, data, yesCount: 0, noCount: 0 }",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "Proposal[] public proposals;   proposals.push(Proposal(target, data, 0, 0));"
+}

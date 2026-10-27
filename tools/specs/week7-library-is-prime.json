@@ -1,0 +1,59 @@
+{
+ "title": "isPrime",
+ "subtitle": "2부터 √x까지 나눠 보고, 하나라도 나누어떨어지면 소수가 아니다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Prime.sol",
+   "내가 작성 (library)",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Prime",
+ "sections": [
+  {
+   "title": "isPrime(51)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "isPrime(51)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "x < 2 → false",
+     "i = 2, 3, … (i * i <= x)"
+    ],
+    [
+     "note",
+     2,
+     "dividesEvenly(51, 3) → true",
+     "→ return false"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "false",
+     "5, 17, 47 → true · 4, 18, 51 → false ✔"
+    ]
+   ]
+  }
+ ],
+ "footer": "for (uint i = 2; i * i <= x; i++) { if (dividesEvenly(x, i)) return false; } return true;"
+}

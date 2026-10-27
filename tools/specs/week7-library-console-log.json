@@ -1,0 +1,73 @@
+{
+ "title": "console.log",
+ "subtitle": "hardhat/console.sol로 컨트랙트 안에서 값을 찍어 숨겨진 메시지를 읽는다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "1회차: 메시지 확인",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "getSecret(secretMessage)",
+     "secret.js (숨겨짐)"
+    ],
+    [
+     "note",
+     2,
+     "console.log(_message)",
+     "테스트 출력 창에 찍힘"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "\"… return 1337\"",
+     "메시지에 답이 적혀 있음"
+    ]
+   ]
+  },
+  {
+   "title": "2회차: 정답 반환",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "callStatic.getSecret(secretMessage)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "1337",
+     "=== secretResponse ✔"
+    ]
+   ]
+  }
+ ],
+ "footer": "import \"hardhat/console.sol\";   console.log(_message);   return 1337;"
+}
