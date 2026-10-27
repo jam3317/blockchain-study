@@ -117,3 +117,39 @@ Solidity 문제는 `sh tools/sol-test.sh week4/<폴더>`로 실행한다 (Hardha
 | 78 | Sending Data | [Fallback](./week4/fallback) | fallback() |
 | 79 | Sum and Average | [Sum and Average](./week4/sum-and-average) | 정수 나눗셈, 이름 붙은 반환값 |
 | 80 | Countdown | [Countdown](./week4/countdown) | 카운터 + selfdestruct |
+
+### Week 5
+
+| # | 과제 | 단계 | 핵심 개념 |
+|---|------|------|-----------|
+| 81 | Mappings | [Members Mapping](./week5/members-mapping) | mapping, 기본값 |
+| 82 | Mappings | [Is Member](./week5/is-member) | O(1) 조회 |
+| 83 | Mappings | [Remove Member](./week5/remove-member) | mapping 삭제 |
+| 84 | Mappings | [Mapping to Struct](./week5/mapping-structs) | mapping → struct, isActive |
+| 85 | Mappings | [Types of Balances](./week5/transfer-amount) | 토큰 잔액, storage vs memory |
+| 86 | Mappings | [Nested Mappings](./week5/nested-mappings) | 중첩 mapping |
+| 87 | Events | [Deployed](./week5/event-deployed) | event, emit, 로그 |
+| 88 | Events | [Transfer](./week5/event-transfer) | 인자 2개 이벤트 |
+| 89 | Events | [Mark the Price](./week5/event-for-sale) | block.timestamp |
+| 90 | Events | [Make a Purchase](./week5/event-purchase) | Checks-Effects-Interactions |
+| 91 | Events | [Indexed](./week5/event-indexed) | indexed, topics |
+| 92 | Build an Escrow | [State Variables](./week5/escrow-addresses) | 에스크로 3역할 |
+| 93 | Build an Escrow | [Constructor Storage](./week5/escrow-constructor) | constructor |
+| 94 | Build an Escrow | [Funding](./week5/escrow-funding) | payable constructor |
+| 95 | Build an Escrow | [Approval](./week5/escrow-approve) | 송금 |
+| 96 | Build an Escrow | [Lock it Down](./week5/escrow-security) | arbiter 권한 |
+| 97 | Build an Escrow | [Events](./week5/escrow-event) | Approved 이벤트 |
+| 98 | Build an Escrow | [Deploy Escrow](./week5/escrow-deploy) | ContractFactory |
+| 99 | Build an Escrow | [Approve](./week5/escrow-approve-js) | connect(signer) |
+| 100 | Arrays | [Fixed Sum](./week5/fixed-sum) | uint[5], calldata |
+| 101 | Arrays | [Dynamic Sum](./week5/dynamic-sum) | uint[] |
+| 102 | Arrays | [Filter Even](./week5/filter-even) | storage push |
+| 103 | Arrays | [Filter to Memory](./week5/filter-to-memory) | new uint[](n) |
+| 104 | Arrays | [Stack Club](./week5/stack-club-add) | 주소 배열 검색 |
+| 105 | Arrays | [Pop](./week5/stack-club-pop) | pop, onlyMember |
+| 106 | Structs | [Vote Storage](./week5/vote-storage) | struct |
+| 107 | Structs | [Vote Memory](./week5/vote-memory) | struct 반환 |
+| 108 | Structs | [Vote Array](./week5/vote-array) | struct 배열 |
+| 109 | Structs | [Choice Lookup](./week5/choice-lookup) | internal 도우미, 튜플 |
+| 110 | Structs | [Vote Once](./week5/vote-once) | public vs external |
+| 111 | Structs | [Change Vote](./week5/change-vote) | storage 원소 수정 |
