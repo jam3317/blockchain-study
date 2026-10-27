@@ -1,0 +1,99 @@
+{
+ "title": "hasVoted / findChoice",
+ "subtitle": "internal 도우미 findVote가 배열을 훑어 (찾았는지, 투표)를 돌려주고, 두 external 함수가 그 결과에서 필요한 부분만 꺼낸다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "hasVoted(계정0)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "hasVoted(계정0)",
+     ""
+    ],
+    [
+     "call",
+     2,
+     2,
+     "findVote(계정0)",
+     "internal 도우미"
+    ],
+    [
+     "note",
+     2,
+     "(bool found, ) = findVote(…)",
+     "두 번째 값은 버림"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "true",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "findChoice(계정0)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "findChoice(계정0)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "(, Vote memory vote) = findVote(…); return vote.choice;",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "YES",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "투표한 사람 true·선택 일치, 안 한 사람 false ?",
+     "✔ 5개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function findVote(address voter) internal view returns(bool found, Vote memory vote)"
+}

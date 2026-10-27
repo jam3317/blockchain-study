@@ -1,0 +1,66 @@
+{
+ "title": "Vote 배열",
+ "subtitle": "Vote[] public votes에 투표를 push로 쌓는다. public 배열 getter는 인덱스를 인자로 받는다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "투표 두 번",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "계정0 YES, 계정1 NO",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "votes.push(Vote(choice, msg.sender))",
+     "votes = [Vote0, Vote1]"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "votes(0), votes(1)",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "(YES, 계정0), (NO, 계정1) ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "Vote[] public votes;  votes.push(Vote(choice, msg.sender));"
+}

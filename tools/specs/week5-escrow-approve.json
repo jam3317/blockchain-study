@@ -1,0 +1,77 @@
+{
+ "title": "approve",
+ "subtitle": "approve()가 isApproved를 true로 바꾸고 컨트랙트 잔액 전부를 beneficiary에게 보낸다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Escrow.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "다른 계정",
+   "depositor/arbiter/beneficiary",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Escrow",
+ "sections": [
+  {
+   "title": "arbiter가 approve()",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(arbiter).approve()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "approve()",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "isApproved = true",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "beneficiary.call{ value: balance }(\"\")",
+     "1 ETH"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "beneficiary +1 ETH, isApproved true ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "isApproved = true; (bool sent, ) = beneficiary.call{ value: address(this).balance }(\"\"); require(sent);"
+}

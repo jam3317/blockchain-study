@@ -1,0 +1,98 @@
+{
+ "title": "arbiter만 승인",
+ "subtitle": "approve()에 require(msg.sender == arbiter)를 넣어 승인자만 돈을 풀 수 있게 한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Escrow.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "다른 계정",
+   "depositor/arbiter/beneficiary",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Escrow",
+ "sections": [
+  {
+   "title": "beneficiary가 approve()",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(beneficiary).approve()",
+     "받는 사람이 스스로 승인 시도"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "approve()",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(msg.sender == arbiter) ✗",
+     "revert"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "에러",
+     "✔"
+    ]
+   ]
+  },
+  {
+   "title": "arbiter가 approve()",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(arbiter).approve()",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "beneficiary에게 1 ETH",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "비승인자 revert, 승인자는 송금 ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "require(msg.sender == arbiter, \"Only the arbiter can approve\");"
+}

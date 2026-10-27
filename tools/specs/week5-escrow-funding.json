@@ -1,0 +1,65 @@
+{
+ "title": "payable constructor",
+ "subtitle": "constructor를 payable로 만들면 배포하면서 이더를 맡길 수 있다. 그 이더는 컨트랙트 잔액이 된다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Escrow.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Escrow",
+ "sections": [
+  {
+   "title": "1 ETH와 함께 배포",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "deploy(arbiter, beneficiary, { value: 1 ETH })",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor(...) payable",
+     "msg.value = 1 ETH"
+    ],
+    [
+     "note",
+     2,
+     "address(this).balance = 1 ETH",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "getBalance(contract) == 1 ETH ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor(address _arbiter, address _beneficiary) payable { … }"
+}

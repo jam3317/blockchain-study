@@ -1,0 +1,79 @@
+{
+ "title": "Vote 구조체",
+ "subtitle": "struct Vote { choice, voter }를 정의하고, createVote가 Vote(choice, msg.sender)를 상태 변수 vote에 저장한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "계정0이 Yes",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(계정0).createVote(YES)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "createVote(choice)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "vote = Vote(choice, msg.sender)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "contract.vote()",
+     "public struct getter"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "{ choice: 0, voter: 계정0 }",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "계정1이 No를 하면 덮어써짐 ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "struct Vote { Choices choice; address voter; }  Vote public vote;  vote = Vote(choice, msg.sender);"
+}

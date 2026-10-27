@@ -1,0 +1,72 @@
+{
+ "title": "filterEven (storage)",
+ "subtitle": "짝수만 골라 storage 배열 evenNumbers에 push한다. push는 storage 배열에서만 된다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "filterEven([1,2,1,4,5])",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.filterEven([1,2,1,4,5])",
+     "거래"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "filterEven(numbers)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "numbers[i] % 2 == 0 → evenNumbers.push",
+     "2, 4"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "evenNumbers(0), evenNumbers(1), evenNumbers(2) …",
+     "범위 밖이면 에러 → 거기서 멈춤"
+    ],
+    [
+     "self",
+     0,
+     "[2, 4] ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "uint[] public evenNumbers;  if (numbers[i] % 2 == 0) evenNumbers.push(numbers[i]);"
+}

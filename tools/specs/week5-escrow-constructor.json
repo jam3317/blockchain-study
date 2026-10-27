@@ -1,0 +1,65 @@
+{
+ "title": "constructor",
+ "subtitle": "배포자(msg.sender)는 depositor, 인자로 받은 두 주소는 arbiter와 beneficiary로 저장한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Escrow.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Escrow",
+ "sections": [
+  {
+   "title": "depositor(계정 2)가 배포",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(depositor).deploy(arbiter, beneficiary)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor(_arbiter, _beneficiary)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "arbiter = _arbiter; beneficiary = _beneficiary; depositor = msg.sender;",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "세 주소가 각 계정과 같나 ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor(address _arbiter, address _beneficiary) { … depositor = msg.sender; }"
+}

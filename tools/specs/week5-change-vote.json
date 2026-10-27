@@ -1,0 +1,85 @@
+{
+ "title": "changeVote",
+ "subtitle": "내 투표를 찾아 storage 배열 원소의 choice를 직접 바꾼다. 끝까지 못 찾으면 revert.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "계정0: YES → NO",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(계정0).changeVote(NO)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "changeVote(choice)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "votes[i].voter == msg.sender → votes[i].choice = NO; return;",
+     "storage를 직접 수정"
+    ]
+   ]
+  },
+  {
+   "title": "투표 안 한 계정",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "changeVote(NO)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "반복 끝까지 못 찾음 → revert(\"No existing vote\")",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "findChoice가 바뀐 값, 없는 투표 변경은 실패 ?",
+     "✔ 9개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "for (…) if (votes[i].voter == msg.sender) { votes[i].choice = choice; return; }  revert(\"No existing vote\");"
+}

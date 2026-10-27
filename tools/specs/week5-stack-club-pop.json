@@ -1,0 +1,78 @@
+{
+ "title": "StackClub (pop)",
+ "subtitle": "배포자를 첫 회원으로 넣고, onlyMember modifier로 회원만 추가·삭제하게 한다. removeLastMember는 pop으로 가장 최근 회원을 뺀다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "StackClub.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "StackClub",
+ "sections": [
+  {
+   "title": "비회원이 addMember",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(비회원).addMember(...)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "onlyMember: require(isMember(msg.sender)) ✗",
+     "revert"
+    ]
+   ]
+  },
+  {
+   "title": "회원이 removeLastMember",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(계정1).removeLastMember()",
+     "members = [배포자, a, b, c]"
+    ],
+    [
+     "note",
+     2,
+     "members.pop()",
+     "[배포자, a, b] → 마지막 c가 빠짐"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "비회원 차단, pop 후 마지막 회원이 사라짐 ?",
+     "✔ 6개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "modifier onlyMember { require(isMember(msg.sender)); _; }  members.pop();"
+}

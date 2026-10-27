@@ -1,0 +1,59 @@
+{
+ "title": "Escrow 주소들",
+ "subtitle": "에스크로의 세 역할(맡기는 사람, 받는 사람, 승인자) 주소를 public 상태 변수로 선언한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Escrow.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Escrow",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Escrow.deploy()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "상태 변수 3개",
+     "depositor, beneficiary, arbiter (기본값 0x000…)"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "contract.arbiter / depositor / beneficiary 함수가 있나 ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "address public depositor; address public beneficiary; address public arbiter;"
+}

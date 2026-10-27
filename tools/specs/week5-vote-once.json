@@ -1,0 +1,65 @@
+{
+ "title": "한 번만 투표",
+ "subtitle": "createVote 맨 앞에서 require(!hasVoted(msg.sender)). hasVoted를 안에서 부르려고 external → public으로 바꾼다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "같은 계정이 두 번 투표",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(계정0).createVote(NO)",
+     "이미 YES를 냄"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "createVote(choice)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(!hasVoted(msg.sender)) ✗",
+     "revert"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "첫 투표 저장, 두 번째 revert ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "require(!hasVoted(msg.sender), \"Already voted\");"
+}

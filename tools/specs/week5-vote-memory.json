@@ -1,0 +1,66 @@
+{
+ "title": "Vote 반환",
+ "subtitle": "view 함수가 memory에 Vote를 만들어 바로 돌려준다 (저장하지 않음). ABI에서는 튜플로 표현된다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "callStatic.createVote(YES)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(계정0).callStatic.createVote(YES)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "createVote(choice) view returns(Vote memory)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "{ choice: 0, voter: 계정0 }",
+     "struct → 튜플 → JS 객체"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "choice와 voter가 맞나 ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function createVote(Choices choice) external view returns(Vote memory) { return Vote(choice, msg.sender); }"
+}

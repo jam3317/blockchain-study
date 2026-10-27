@@ -1,0 +1,78 @@
+{
+ "title": "approve (JS)",
+ "subtitle": "JS에서 arbiter 서명자로 연결해 approve()를 호출한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "approve.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Escrow.sol",
+   "escrow-event 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "approve",
+ "sections": [
+  {
+   "title": "approve 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "approve(contract, arbiterSigner)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "contract.connect(arbiterSigner).approve()",
+     "arbiter가 서명"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "approve()",
+     "msg.sender = arbiter ✔"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "거래 Promise",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "beneficiary 잔액 +1 ETH ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "return contract.connect(arbiterSigner).approve();"
+}

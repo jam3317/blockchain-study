@@ -1,0 +1,86 @@
+{
+ "title": "StackClub",
+ "subtitle": "주소 배열 members에 push로 회원을 넣고, isMember는 배열을 처음부터 훑어 찾는다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "StackClub.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "StackClub",
+ "sections": [
+  {
+   "title": "addMember × 3",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "addMember(계정0~2)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "members.push(member)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "isMember",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "isMember(계정)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "for (i < members.length) if (members[i] == member) return true",
+     "끝까지 없으면 false"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "true / false",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "계정0~2 true, 3~5 false ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "address[] members;  members.push(member);"
+}

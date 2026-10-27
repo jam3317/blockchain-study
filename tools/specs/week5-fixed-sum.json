@@ -1,0 +1,72 @@
+{
+ "title": "sum (고정 배열)",
+ "subtitle": "크기가 5로 정해진 배열 uint[5]를 받아 for 반복문으로 합을 구한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "sum([1,2,3,4,5])",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.sum([1,2,3,4,5])",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "sum(uint[5] calldata numbers)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "for (i = 0; i < 5; i++) total += numbers[i]",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "15",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "[1×5]→5, [1..5]→15 ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function sum(uint[5] calldata numbers) external pure returns(uint total) { for (…) total += numbers[i]; }"
+}

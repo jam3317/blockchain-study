@@ -1,0 +1,78 @@
+{
+ "title": "deploy",
+ "subtitle": "ABI + 바이트코드 + 서명자로 ContractFactory를 만들고, 생성자 인자와 { value: 1 ETH }를 넘겨 배포한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "deploy.js",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "ethers",
+   "ContractFactory",
+   "teal"
+  ],
+  [
+   "Escrow.sol",
+   "escrow-event 과제",
+   "pink"
+  ]
+ ],
+ "active": 1,
+ "active_label": "deploy",
+ "sections": [
+  {
+   "title": "deploy 실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "deploy(abi, bytecode, depositor, arbiter, beneficiary)",
+     "컴파일 결과에서 abi, bytecode"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "new ContractFactory(abi, bytecode, signer)",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "factory.deploy(arbiter, beneficiary, { value: 1 ETH })",
+     "배포 거래 = 바이트코드 + 인자"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "Promise<Contract>",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "잔액 1 ETH, 세 주소가 맞나 ?",
+     "✔ 5개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "const factory = new ethers.ContractFactory(abi, bytecode, signer); return factory.deploy(arbiter, beneficiary, { value: parseEther(\"1\") });"
+}

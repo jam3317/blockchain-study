@@ -1,0 +1,78 @@
+{
+ "title": "filterEven (memory)",
+ "subtitle": "memory 배열은 push가 없고 크기를 처음에 정해야 한다. 그래서 짝수 개수를 먼저 세고, 그 크기로 만든 뒤 채운다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "filterEven([1,2,1,4,1])",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "contract.filterEven([1,2,1,4,1])",
+     "pure, 거래 X"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "filterEven(numbers)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "1단계: 짝수 개수 세기 → 2",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "2단계: new uint[](2) 만들고 채우기",
+     "evens[0]=2, evens[1]=4"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "[2, 4]",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "[2,4], [2,10,2] ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "uint[] memory evens = new uint[](count);  evens[j] = numbers[i]; j++;"
+}
