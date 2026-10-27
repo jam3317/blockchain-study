@@ -11,6 +11,7 @@ constructor → 입력 검사 → Transaction 저장소 → addTransaction → c
 def st(**kw):
     kw.setdefault("env", ENV)
     kw.setdefault("img", "MultiSig_diagram.png")
+    kw.setdefault("run", f"sh tools/sol-test.sh {kw['dir']}")
     return kw
 
 STAGES = [
