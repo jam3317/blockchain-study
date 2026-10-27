@@ -1,0 +1,90 @@
+{
+ "title": "Party.payBill",
+ "subtitle": "모인 돈으로 가게에 계산서 금액을 보내고, 남은 돈을 참가자 수로 나눠 똑같이 돌려준다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Party.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "친구들 / 가게",
+   "계정 1~4, 6",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Party",
+ "sections": [
+  {
+   "title": "준비",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "친구 4명이 rsvp (2 ETH씩)",
+     "컨트랙트 잔액 8 ETH"
+    ]
+   ]
+  },
+  {
+   "title": "payBill(venue, 4 ETH)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "payBill(venue, 4 ETH)",
+     "계정 0이 호출 (참가자 아님)"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "venue.call{ value: 4 ETH }",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "share = 남은 4 ETH / 4명 = 1 ETH",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "members[i].call{ value: 1 ETH } × 4",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "가게 +4, 친구마다 +1 (8 ETH면 0, 2 ETH면 1.5) ?",
+     "✔ 6개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "uint share = address(this).balance / members.length; for (…) members[i].call{ value: share }(\"\");"
+}

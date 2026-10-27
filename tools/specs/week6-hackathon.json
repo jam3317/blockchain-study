@@ -1,0 +1,84 @@
+{
+ "title": "findWinner",
+ "subtitle": "프로젝트마다 평점 평균을 구해 가장 높은 프로젝트를 돌려준다 (이중 반복문).",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Hackathon.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Hackathon",
+ "sections": [
+  {
+   "title": "평점",
+   "color": "gray",
+   "steps": [
+    [
+     "note",
+     2,
+     "First [2,2,2,2,2,2] → 2",
+     "Second [0,4] → 2, Winning [2,3,4] → 3"
+    ]
+   ]
+  },
+  {
+   "title": "findWinner()",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "findWinner.call()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "findWinner() view returns(Project memory)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "for 프로젝트: for 평점: sum → average = sum / length",
+     "가장 큰 average의 인덱스 기억"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "{ title: 'Winning', ratings: [...] }",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "winner.title === 'Winning' ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "uint average = ratings.length == 0 ? 0 : sum / ratings.length; if (average > bestAverage) { … }"
+}

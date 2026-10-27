@@ -1,0 +1,104 @@
+{
+ "title": "Switch",
+ "subtitle": "owner가 ping할 때마다 마지막 활동 시각을 갱신한다. 52주 동안 활동이 없으면 recipient가 돈을 가져갈 수 있다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Switch.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Switch",
+ "sections": [
+  {
+   "title": "배포 (1 ETH)",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Switch.deploy(recipient, { value: 1 ETH })",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "lastAction = block.timestamp",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "40주 후 withdraw",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "evm_increaseTime(40주)",
+     "테스트 체인의 시계를 앞으로"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "withdraw()",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "block.timestamp − lastAction < 52 weeks",
+     "revert"
+    ]
+   ]
+  },
+  {
+   "title": "40주 더 (총 80주) 후",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     1,
+     2,
+     "withdraw()",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "≥ 52 weeks ✔ → recipient에게 1 ETH",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "owner만 ping, ping하면 시계 초기화 ?",
+     "✔ 7개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "require(block.timestamp - lastAction >= 52 weeks);"
+}

@@ -1,0 +1,91 @@
+{
+ "title": "Party.rsvp",
+ "subtitle": "참가비를 정확히 내야 참가할 수 있고, 같은 주소는 한 번만. 참가자는 배열에, 중복 확인은 mapping으로.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Party.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Party",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Party.deploy(2 ETH)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor(_deposit)",
+     "deposit = 2 ETH"
+    ]
+   ]
+  },
+  {
+   "title": "rsvp",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "rsvp({ value: 2 ETH })",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "rsvp() payable",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(msg.value == deposit), require(!hasJoined[sender])",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "hasJoined[sender] = true; members.push(sender)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "2 ETH 성공 / 1·3 ETH 실패 / 두 번 실패 ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "require(msg.value == deposit); require(!hasJoined[msg.sender]); hasJoined[msg.sender] = true; members.push(msg.sender);"
+}
