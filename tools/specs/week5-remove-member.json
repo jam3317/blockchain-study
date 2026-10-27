@@ -1,0 +1,65 @@
+{
+ "title": "removeMember",
+ "subtitle": "mapping에서 지우기는 그 칸을 false로 바꾸는 것뿐이다. 배열처럼 뒤를 당길 필요가 없다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "removeMember(계정0)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "removeMember(계정0)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "removeMember(member)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "members[member] = false",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "isMember(계정0) false, isMember(계정1) true ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function removeMember(address member) external { members[member] = false; }"
+}

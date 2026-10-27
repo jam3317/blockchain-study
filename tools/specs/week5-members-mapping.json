@@ -1,0 +1,79 @@
+{
+ "title": "members",
+ "subtitle": "mapping(address => bool) members는 주소마다 칸이 하나씩 있는 표. addMember가 그 칸에 true를 적는다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "addMember × 2",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "addMember(계정0), addMember(계정1)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "addMember(member)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "members[member] = true",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "members(계정0), members(계정1), members(계정2)",
+     "public mapping getter"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "true, true, false",
+     "적지 않은 칸은 기본값 false"
+    ],
+    [
+     "self",
+     0,
+     "멤버는 true, 아닌 사람은 false ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "mapping(address => bool) public members;  members[member] = true;"
+}

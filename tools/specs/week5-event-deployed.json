@@ -1,0 +1,78 @@
+{
+ "title": "Deployed 이벤트",
+ "subtitle": "constructor에서 emit Deployed(msg.sender). 이벤트는 거래 영수증의 로그에 남고, 밖에서 읽을 수 있다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "collectible.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Collectible",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Collectible.deploy()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor()",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "emit Deployed(msg.sender);",
+     "영수증 logs에 기록"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "deployTransaction.wait() → receipt.logs",
+     ""
+    ],
+    [
+     "note",
+     0,
+     "getEventTopic('Deployed')로 로그 찾기 → parseLog",
+     ""
+    ],
+    [
+     "self",
+     0,
+     "args = [배포자 주소] ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "event Deployed(address owner);  constructor() { emit Deployed(msg.sender); }"
+}

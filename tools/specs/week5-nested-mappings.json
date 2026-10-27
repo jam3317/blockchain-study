@@ -1,0 +1,79 @@
+{
+ "title": "connections",
+ "subtitle": "connections[나][상대] = 관계. 바깥 mapping이 나, 안쪽 mapping이 상대를 고른다. 방향이 있어서 [a1][a2]와 [a2][a1]은 다른 칸이다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "한쪽만 연결",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(s1).connectWith(a2, Family)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "connectWith(other, type)",
+     "msg.sender = a1"
+    ],
+    [
+     "note",
+     2,
+     "connections[a1][a2] = Family",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "connections(a1, a2), connections(a2, a1)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "2 (Family), 0 (Unacquainted)",
+     "반대 방향은 기본값"
+    ],
+    [
+     "self",
+     0,
+     "방향별로 맞는 관계 ?",
+     "✔ 6개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "mapping(address => mapping(address => ConnectionTypes)) public connections;  connections[msg.sender][other] = connectionType;"
+}

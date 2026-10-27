@@ -1,0 +1,65 @@
+{
+ "title": "Transfer 이벤트",
+ "subtitle": "owner만 transfer할 수 있고, 소유자를 바꾼 뒤 emit Transfer(원래 주인, 새 주인).",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "collectible.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Collectible",
+ "sections": [
+  {
+   "title": "transfer(a2)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "collectible.transfer(a2)",
+     "owner(계정0)가 호출"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "transfer(recipient)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(msg.sender == owner) → owner = a2",
+     "emit Transfer(계정0, a2)"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "이벤트 args [계정0, a2], 원래 주인이 다시 transfer → revert ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "event Transfer(address, address);  require(msg.sender == owner); owner = recipient; emit Transfer(originalOwner, recipient);"
+}

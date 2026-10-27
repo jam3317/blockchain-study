@@ -1,0 +1,65 @@
+{
+ "title": "ForSale 이벤트",
+ "subtitle": "owner만 markPrice로 가격을 걸 수 있고, emit ForSale(가격, block.timestamp).",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "collectible.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Collectible",
+ "sections": [
+  {
+   "title": "markPrice(1 ETH)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "collectible.markPrice(1 ETH)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "markPrice(price)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "emit ForSale(price, block.timestamp)",
+     "블록 시간(초)"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "args [1 ETH, 그 블록의 timestamp], 다른 계정 → revert ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "event ForSale(uint price, uint timestamp);  emit ForSale(price, block.timestamp);"
+}

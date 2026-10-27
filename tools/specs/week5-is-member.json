@@ -1,0 +1,72 @@
+{
+ "title": "isMember",
+ "subtitle": "view 함수 isMember가 mapping 칸을 바로 읽어 돌려준다. 배열처럼 하나씩 찾을 필요가 없다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "isMember(계정0)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "callStatic.isMember(계정0)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "isMember(member) view",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "return members[member];",
+     "O(1) 조회"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "true",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "멤버 true, 비멤버 false ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function isMember(address member) external view returns(bool) { return members[member]; }"
+}

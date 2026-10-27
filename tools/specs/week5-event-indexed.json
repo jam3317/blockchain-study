@@ -1,0 +1,59 @@
+{
+ "title": "indexed",
+ "subtitle": "이벤트의 주소 인자에 indexed를 붙이면 로그의 topic으로 따로 저장되어 그 값으로 검색(필터)할 수 있다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "collectible.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Collectible",
+ "sections": [
+  {
+   "title": "컴파일 결과(ABI) 확인",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "hre.artifacts.readArtifact('Collectible')",
+     ""
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "ABI",
+     "event 입력마다 indexed: true/false"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "Deployed·Transfer·Purchase의 주소가 indexed ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "event Transfer(address indexed originalOwner, address indexed newOwner);"
+}

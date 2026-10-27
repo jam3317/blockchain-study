@@ -1,0 +1,89 @@
+{
+ "title": "transfer",
+ "subtitle": "User storage 참조로 보내는 사람과 받는 사람의 구조체를 직접 고친다. 둘 다 활성이고 잔액이 충분해야 한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "a1 → a2, 50",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(a1).transfer(a2, 50)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "transfer(recipient, amount)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "User storage sender = users[msg.sender]",
+     "storage = 원본을 가리킴 (복사 X)"
+    ],
+    [
+     "note",
+     2,
+     "require(둘 다 isActive), require(잔액 ≥ 50)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "sender.balance −= 50; receiver.balance += 50",
+     "100/100 → 50/150"
+    ]
+   ]
+  },
+  {
+   "title": "실패하는 경우",
+   "color": "pink",
+   "steps": [
+    [
+     "self",
+     0,
+     "받는 사람이 없음 / 150 보내기 → revert ?",
+     "✔"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "a1 50, a2 150 ?",
+     "✔ 7개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "User storage sender = users[msg.sender]; require(sender.isActive && receiver.isActive); require(sender.balance >= amount);"
+}

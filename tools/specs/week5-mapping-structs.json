@@ -1,0 +1,99 @@
+{
+ "title": "users",
+ "subtitle": "mapping(address => User)로 주소마다 구조체를 저장한다. createUser는 이미 활성 사용자면 막고, 아니면 잔액 100으로 만든다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "contract.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Contract",
+ "sections": [
+  {
+   "title": "createUser() 처음",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(a1).createUser()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "createUser()",
+     "msg.sender = a1"
+    ],
+    [
+     "note",
+     2,
+     "require(!users[a1].isActive) ✔",
+     "users[a1] = User(100, true)"
+    ]
+   ]
+  },
+  {
+   "title": "createUser() 두 번째",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(a1).createUser()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "createUser()",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(!users[a1].isActive) ✗",
+     "revert"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "에러",
+     "✔"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "users(a1) = (100, true), 중복 생성 revert ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "require(!users[msg.sender].isActive); users[msg.sender] = User(100, true);"
+}

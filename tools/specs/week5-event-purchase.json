@@ -1,0 +1,83 @@
+{
+ "title": "purchase",
+ "subtitle": "판매 중이고 금액이 맞으면, 소유자를 구매자로 바꾸고 가격을 0(판매 종료)으로 만든 뒤 판매자에게 돈을 보내고 Purchase 이벤트를 남긴다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "collectible.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Collectible",
+ "sections": [
+  {
+   "title": "a2가 1 ETH로 구매",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(a2).purchase({ value: 1 ETH })",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "purchase() payable",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(price > 0), require(msg.value == price)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "owner = a2; price = 0;",
+     "상태 먼저 바꾸고"
+    ],
+    [
+     "note",
+     2,
+     "seller.call{ value: msg.value }(\"\")",
+     "돈은 나중에 보냄"
+    ],
+    [
+     "note",
+     2,
+     "emit Purchase(1 ETH, a2)",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "판매 전/금액 부족/재구매 → revert, 판매자 +1 ETH, 새 주인이 다시 팔 수 있음 ?",
+     "✔ 6개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "require(price > 0 && msg.value == price); owner = msg.sender; price = 0; seller.call{ value: msg.value }(\"\");"
+}
