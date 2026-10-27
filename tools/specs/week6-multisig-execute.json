@@ -1,0 +1,76 @@
+{
+ "title": "executeTransaction",
+ "subtitle": "owner이고, 확인이 충분하고, 아직 실행 안 된 거래면 executed = true로 바꾼 뒤 destination에 value를 보낸다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "MultiSig.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "owner들 / 받는 사람",
+   "계정 0~2 / 기타",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "MultiSig",
+ "sections": [
+  {
+   "title": "실행",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(계정1).executeTransaction(0)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(isOwner), require(isConfirmed), require(!executed)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "executed = true",
+     "상태 먼저 (재진입 대비)"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "destination.call{ value }(\"\")",
+     "0.5 ETH"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "executed true, 받는 사람 +0.5, 확인 부족·비owner는 실패 ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "require(isConfirmed(id)); tx.executed = true; tx.destination.call{ value: tx.value }(\"\");"
+}

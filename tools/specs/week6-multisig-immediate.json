@@ -1,0 +1,83 @@
+{
+ "title": "즉시 실행",
+ "subtitle": "confirmTransaction 끝에서 확인이 충분해지면 바로 executeTransaction을 부른다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "MultiSig.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "owner들 / 받는 사람",
+   "계정 0~2 / 기타",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "MultiSig",
+ "sections": [
+  {
+   "title": "submit (확인 1)",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "submitTransaction(계정2, 0.5 ETH)",
+     "아직 실행 안 됨"
+    ]
+   ]
+  },
+  {
+   "title": "계정1이 confirm (확인 2)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(계정1).confirmTransaction(0)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "if (isConfirmed(0)) executeTransaction(0)",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "계정2에게 0.5 ETH",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "확인 전엔 미실행, 확인 후 실행·송금 ?",
+     "✔ 4개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "confirmations[id][msg.sender] = true; if (isConfirmed(id)) executeTransaction(id);"
+}

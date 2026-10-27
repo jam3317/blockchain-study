@@ -1,0 +1,58 @@
+{
+ "title": "owner만 확인",
+ "subtitle": "private 도우미 isOwner로 msg.sender가 owner인지 확인한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "MultiSig.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "MultiSig",
+ "sections": [
+  {
+   "title": "계정3(owner 아님)이 확인",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "connect(계정3).confirmTransaction(0)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(isOwner(msg.sender)) ✗",
+     "revert"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "계정3 실패, 계정2 성공 ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function isOwner(address addr) private view returns(bool) { for (…) if (owners[i] == addr) return true; return false; }"
+}

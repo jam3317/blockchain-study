@@ -1,0 +1,66 @@
+{
+ "title": "submitTransaction",
+ "subtitle": "추가 + 내 확인을 한 번에. addTransaction은 internal로 숨긴다 (밖에서 부를 필요가 없으니).",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "MultiSig.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "MultiSig",
+ "sections": [
+  {
+   "title": "submitTransaction(계정1, 100)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "submitTransaction(계정1, 100)",
+     ""
+    ],
+    [
+     "call",
+     2,
+     2,
+     "addTransaction(…) → id",
+     "internal"
+    ],
+    [
+     "call",
+     2,
+     2,
+     "confirmTransaction(id)",
+     "제출자가 바로 확인"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "거래 저장, 확인 1, contract.addTransaction === undefined ?",
+     "✔ 3개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function submitTransaction(address d, uint v) external { uint256 id = addTransaction(d, v); confirmTransaction(id); }"
+}

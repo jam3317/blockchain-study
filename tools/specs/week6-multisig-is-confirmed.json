@@ -1,0 +1,65 @@
+{
+ "title": "isConfirmed",
+ "subtitle": "확인 수가 required 이상이면 true.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "MultiSig.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "MultiSig",
+ "sections": [
+  {
+   "title": "isConfirmed(0)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "submit(계정0) + confirm(계정1)",
+     "확인 2"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "isConfirmed(0)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "getConfirmationsCount(0) >= required",
+     "2 ≥ 2 → true"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "확인 2 → true, 1 → false ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "return getConfirmationsCount(transactionId) >= required;"
+}

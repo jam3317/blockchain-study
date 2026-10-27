@@ -1,0 +1,65 @@
+{
+ "title": "constructor",
+ "subtitle": "owner 주소 배열과 필요한 확인 수(required)를 받아 저장한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "MultiSig.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "MultiSig",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "MultiSig.deploy([계정0, 1, 2], 2)",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "constructor(_owners, _required)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "owners = _owners; required = _required;",
+     "3명 중 2명 확인 필요 (2-of-3)"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "owners(0), owners(2), required() ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "address[] public owners; uint256 public required;"
+}

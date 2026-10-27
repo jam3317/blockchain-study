@@ -1,0 +1,71 @@
+{
+ "title": "confirmTransaction",
+ "subtitle": "owner가 확인하면 confirmations[id][나] = true. 확인 수는 owner 배열을 돌며 true인 사람을 센다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "MultiSig.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "MultiSig",
+ "sections": [
+  {
+   "title": "거래 1: 계정0, 계정1이 확인",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "confirmTransaction(1) (계정0), (계정1)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "confirmations[1][계정0] = true, confirmations[1][계정1] = true",
+     ""
+    ],
+    [
+     "call",
+     0,
+     1,
+     "getConfirmationsCount(1)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "for owner in owners: if confirmations[1][owner] count++",
+     "→ 2"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "거래 0 → 1, 거래 1 → 2 ?",
+     "✔ 2개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "confirmations[transactionId][msg.sender] = true;  for (…) if (confirmations[id][owners[i]]) count++;"
+}

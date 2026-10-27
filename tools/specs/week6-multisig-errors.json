@@ -1,0 +1,58 @@
+{
+ "title": "입력 검사",
+ "subtitle": "owner가 없거나, required가 0이거나, owner 수보다 크면 배포를 되돌린다 (돈이 영원히 묶이는 걸 막음).",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "MultiSig.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "MultiSig",
+ "sections": [
+  {
+   "title": "잘못된 배포",
+   "color": "pink",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "deploy([], 1) / deploy(3명, 0) / deploy(3명, 4)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(_owners.length > 0), require(_required > 0), require(_required <= _owners.length)",
+     "하나라도 거짓 → revert"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "정상 배포는 성공, 잘못된 셋은 실패 ?",
+     "✔ 5개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "require(_owners.length > 0); require(_required > 0); require(_required <= _owners.length);"
+}

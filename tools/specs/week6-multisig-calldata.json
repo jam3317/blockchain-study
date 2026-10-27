@@ -1,0 +1,77 @@
+{
+ "title": "calldata 실행",
+ "subtitle": "Transaction에 bytes data를 추가해 실행 때 call(data)로 보낸다. 이더뿐 아니라 ERC20 transfer 같은 함수 호출도 멀티시그로 실행할 수 있다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "MultiSig.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "EIP20.sol",
+   "테스트용 토큰",
+   "pink"
+  ]
+ ],
+ "active": 2,
+ "active_label": "MultiSig",
+ "sections": [
+  {
+   "title": "ERC20 토큰 보내기",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "token.interface.encodeFunctionData('transfer', [계정2, 10000])",
+     ""
+    ],
+    [
+     "call",
+     0,
+     1,
+     "submitTransaction(token, 0, data)",
+     "required = 1 → 바로 실행"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "token.call{ value: 0 }(data)",
+     "= token.transfer(계정2, 10000)"
+    ],
+    [
+     "note",
+     3,
+     "msg.sender = 멀티시그 → 멀티시그의 토큰이 이동",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "green",
+   "steps": [
+    [
+     "self",
+     0,
+     "토큰·이더 모두 목적지로 이동 ?",
+     "✔ 6개 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "struct Transaction { …; bytes data; }  tx.destination.call{ value: tx.value }(tx.data);"
+}
