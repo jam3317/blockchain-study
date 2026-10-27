@@ -1,0 +1,85 @@
+{
+ "title": "Mage is Hero / Warrior is Hero",
+ "subtitle": "자식 컨트랙트는 부모(Hero)의 상태 변수와 함수를 그대로 물려받는다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "SuperHeroes.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hero.sol",
+   "부모 (주어짐)",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Warrior",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Warrior.deploy()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "Warrior 생성",
+     ""
+    ],
+    [
+     "note",
+     3,
+     "health = 100",
+     "부모의 초기값이 그대로 들어옴"
+    ]
+   ]
+  },
+  {
+   "title": "takeDamage(10)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "warrior.takeDamage(10)",
+     "Warrior에는 직접 쓴 함수가 없음"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "상속받은 Hero.takeDamage",
+     "health -= 10"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "health() → 90",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "contract Mage is Hero { }   contract Warrior is Hero { }"
+}

@@ -153,3 +153,38 @@ Solidity 문제는 `sh tools/sol-test.sh week4/<폴더>`로 실행한다 (Hardha
 | 109 | Structs | [Choice Lookup](./week5/choice-lookup) | internal 도우미, 튜플 |
 | 110 | Structs | [Vote Once](./week5/vote-once) | public vs external |
 | 111 | Structs | [Change Vote](./week5/change-vote) | storage 원소 수정 |
+
+### Week 6
+
+| # | 과제 | 단계 | 핵심 개념 |
+|---|------|------|-----------|
+| 112 | Party Split | [Start a Party](./week6/party-rsvp) | 배열 + mapping |
+| 113 | Party Split | [Pay the Bill](./week6/party-pay-bill) | 잔액 나눠 환불 |
+| 114 | Dead Man's Switch | [Dead Man's Switch](./week6/dead-mans-switch) | block.timestamp, 52 weeks |
+| 115 | Hackathon | [Top Rated Project](./week6/hackathon) | 이중 반복문, 평균 |
+| 116 | Multi-Sig | [Constructor](./week6/multisig-constructor) | owners, required |
+| 117 | Multi-Sig | [Errors](./week6/multisig-errors) | require 검증 |
+| 118 | Multi-Sig | [Transactions](./week6/multisig-transactions) | struct mapping |
+| 119 | Multi-Sig | [Add Transaction](./week6/multisig-add-transaction) | internal, id 반환 |
+| 120 | Multi-Sig | [Confirmations](./week6/multisig-confirmations) | 이중 mapping |
+| 121 | Multi-Sig | [Confirm](./week6/multisig-confirm) | 확인 개수 세기 |
+| 122 | Multi-Sig | [Only Owners](./week6/multisig-only-owners) | isOwner |
+| 123 | Multi-Sig | [Submit](./week6/multisig-submit) | 추가 + 확인 |
+| 124 | Multi-Sig | [Receive](./week6/multisig-receive) | receive() |
+| 125 | Multi-Sig | [Is Confirmed](./week6/multisig-is-confirmed) | required 비교 |
+| 126 | Multi-Sig | [Execute](./week6/multisig-execute) | call{value} |
+| 127 | Multi-Sig | [Immediate Execution](./week6/multisig-immediate) | 확인 즉시 실행 |
+| 128 | Multi-Sig | [Calldata](./week6/multisig-calldata) | bytes data, ERC-20 전송 |
+| 129 | Inheritance | [Make SuperHeroes](./week6/inherit-heroes) | is (상속) |
+| 130 | Inheritance | [Constructor Inheritance](./week6/inherit-constructor) | Hero(200) |
+| 131 | Inheritance | [Virtual Override](./week6/inherit-override) | abstract, virtual, override |
+| 132 | Inheritance | [Super Call](./week6/inherit-super) | super |
+| 133 | Inheritance | [Only Owner](./week6/inherit-ownable) | 부모 modifier |
+| 134 | Inheritance | [Multiple Inheritance](./week6/inherit-multiple) | 다중 상속 순서 |
+| 135 | Build an ERC-20 | [Token Supply](./week6/erc20-supply) | public getter |
+| 136 | Build an ERC-20 | [Configuration](./week6/erc20-config) | name, symbol, decimals |
+| 137 | Build an ERC-20 | [Balances](./week6/erc20-balances) | balanceOf |
+| 138 | Build an ERC-20 | [Minting](./week6/erc20-mint) | 1000 × 10^18 |
+| 139 | Build an ERC-20 | [Transfer](./week6/erc20-transfer) | 잔액 이동 |
+| 140 | Build an ERC-20 | [Transfer Event](./week6/erc20-events) | emit Transfer |
+| 141 | ERC-20 Treasure Chest | [Plunder](./week6/erc20-treasure-chest) | IERC20 인터페이스 호출 |

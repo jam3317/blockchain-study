@@ -1,0 +1,87 @@
+{
+ "title": "transfer",
+ "subtitle": "보낸 사람 잔액을 빼고 받는 사람 잔액을 더한다. 잔액이 모자라면 revert.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Token.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Token",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Token.deploy()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "Token 생성",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "transfer(a1, 1) (owner)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "require(balances[msg.sender] >= amount)",
+     "-= amount / += amount · return true"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "owner −1 · a1 +1",
+     "두 번 하면 −2 · +2 ✔"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "connect(s1).transfer(owner, 1)",
+     "s1 잔액 0"
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "revert",
+     "✔ 에러가 나야 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function transfer(address recipient, uint amount) public returns (bool)"
+}

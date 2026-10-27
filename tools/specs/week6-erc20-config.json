@@ -1,0 +1,67 @@
+{
+ "title": "name · symbol · decimals",
+ "subtitle": "ERC-20의 선택 항목 세 가지를 public 변수로 만든다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Token.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Token",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Token.deploy()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "Token 생성",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "name() / symbol() / decimals()",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "\"Study Token\" / \"STK\" / 18",
+     "길이 ≥1 · 길이 3 · 18 → ✔"
+    ]
+   ]
+  }
+ ],
+ "footer": "string public name; string public symbol; uint8 public decimals = 18;"
+}

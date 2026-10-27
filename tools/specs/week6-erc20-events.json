@@ -1,0 +1,79 @@
+{
+ "title": "emit Transfer",
+ "subtitle": "transfer가 끝날 때 Transfer(from, to, value) 이벤트를 남긴다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Token.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Token",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Token.deploy()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "Token 생성",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "transfer(a1, 1)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "emit Transfer(msg.sender, recipient, amount)",
+     "로그에 기록"
+    ],
+    [
+     "ret",
+     1,
+     0,
+     "receipt.events",
+     "event === \"Transfer\" 찾기"
+    ],
+    [
+     "self",
+     0,
+     "args = [owner, a1, 1] ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "event Transfer(address indexed from, address indexed to, uint256 value);"
+}

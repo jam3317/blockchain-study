@@ -1,0 +1,86 @@
+{
+ "title": "Ownable, Transferable",
+ "subtitle": "Collectible이 두 부모를 함께 상속하고, Transferable.transfer로 주인을 바꾼다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "BaseContracts.sol",
+   "Transferable 추가",
+   "orange"
+  ],
+  [
+   "Collectible.sol",
+   "is Ownable, Transferable",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Transferable",
+ "sections": [
+  {
+   "title": "막혀야 하는 호출",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     3,
+     "connect(s2).transfer(a2)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "onlyOwner 실패",
+     "✔ revert"
+    ]
+   ]
+  },
+  {
+   "title": "주인 넘기기",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     3,
+     "transfer(a2) (owner)",
+     ""
+    ],
+    [
+     "call",
+     3,
+     2,
+     "Transferable.transfer",
+     "owner = a2"
+    ],
+    [
+     "call",
+     0,
+     3,
+     "connect(s2).markPrice(10)",
+     "이제 a2가 owner"
+    ],
+    [
+     "ret",
+     3,
+     0,
+     "price() → 10",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "contract Transferable is Ownable { function transfer(address newOwner) external onlyOwner { owner = newOwner; } }"
+}

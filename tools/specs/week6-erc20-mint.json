@@ -1,0 +1,73 @@
+{
+ "title": "constructor 발행",
+ "subtitle": "배포할 때 1000개(×10^18)를 만들어 배포자에게 모두 준다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Token.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Token",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Token.deploy()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "Token 생성",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "note",
+     2,
+     "totalSupply = 1000 * 10**18",
+     "balances[msg.sender] = totalSupply"
+    ],
+    [
+     "call",
+     0,
+     2,
+     "balanceOf(owner) / balanceOf(a1)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "parseEther(\"1000\") / 0",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "constructor() { totalSupply = 1000 * (10 ** decimals); balances[msg.sender] = totalSupply; }"
+}

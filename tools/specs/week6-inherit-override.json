@@ -1,0 +1,83 @@
+{
+ "title": "attack() override",
+ "subtitle": "abstract Hero의 virtual attack을 영웅마다 override해 적에게 다른 공격을 보낸다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "SuperHeroes.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "EnemyContract",
+   "숨겨진 적",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Warrior",
+ "sections": [
+  {
+   "title": "warrior.attack(enemy)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "warrior.attack(enemy.address)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "Enemy enemy = Enemy(_enemy)",
+     "주소 → 인터페이스로 감싸기"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "enemy.takeAttack(Brawl)",
+     "Mage는 Spell"
+    ],
+    [
+     "note",
+     3,
+     "emit Attacked(0)",
+     "Brawl = 0, Spell = 1"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "gray",
+   "steps": [
+    [
+     "ret",
+     1,
+     0,
+     "receipt.logs",
+     "Attacked 이벤트 찾기"
+    ],
+    [
+     "self",
+     0,
+     "Number(log.data) === BRAWL ?",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "function attack(address _enemy) public override { Enemy(_enemy).takeAttack(Hero.AttackTypes.Brawl); }"
+}

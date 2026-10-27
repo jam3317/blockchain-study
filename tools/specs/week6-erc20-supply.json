@@ -1,0 +1,67 @@
+{
+ "title": "totalSupply",
+ "subtitle": "public 상태 변수는 같은 이름의 읽기 함수가 자동으로 생긴다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Token.sol",
+   "내가 작성",
+   "orange"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Token",
+ "sections": [
+  {
+   "title": "배포",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Token.deploy()",
+     ""
+    ],
+    [
+     "call",
+     1,
+     2,
+     "Token 생성",
+     ""
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "callStatic.totalSupply()",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "0",
+     "uint 기본값 · ✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "uint public totalSupply;"
+}

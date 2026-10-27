@@ -1,0 +1,77 @@
+{
+ "title": "super.attack()",
+ "subtitle": "자식의 override 안에서 부모의 원래 동작(energy--)도 함께 실행한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "SuperHeroes.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hero.sol",
+   "부모 attack",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Warrior",
+ "sections": [
+  {
+   "title": "warrior.attack(enemy)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "warrior.attack(enemy.address)",
+     ""
+    ],
+    [
+     "note",
+     2,
+     "enemy.takeAttack(Brawl)",
+     "자식만의 동작"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "super.attack(_enemy)",
+     "부모 함수로 올라감"
+    ],
+    [
+     "note",
+     3,
+     "energy-- ",
+     "10 → 9"
+    ]
+   ]
+  },
+  {
+   "title": "채점",
+   "color": "gray",
+   "steps": [
+    [
+     "ret",
+     2,
+     0,
+     "energy() → 9",
+     "Attacked 이벤트도 확인 · ✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "enemy.takeAttack(Hero.AttackTypes.Brawl);  super.attack(_enemy);"
+}

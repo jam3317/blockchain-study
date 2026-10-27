@@ -1,0 +1,85 @@
+{
+ "title": "plunder",
+ "subtitle": "토큰 주소 목록을 돌면서 Chest가 가진 잔액을 전부 호출자에게 보낸다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "Chest.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "ERC20FixedSupply",
+   "토큰 컨트랙트들",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Chest",
+ "sections": [
+  {
+   "title": "준비",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     3,
+     "token1.transfer(chest, 250)",
+     "token2 → 300"
+    ]
+   ]
+  },
+  {
+   "title": "plunder([token1, token2])",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "connect(hunter).plunder([...])",
+     ""
+    ],
+    [
+     "call",
+     2,
+     3,
+     "IERC20(t).balanceOf(address(this))",
+     "→ 250"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "IERC20(t).transfer(msg.sender, 250)",
+     "msg.sender = hunter"
+    ],
+    [
+     "note",
+     2,
+     "token2도 반복",
+     "→ 300"
+    ],
+    [
+     "ret",
+     3,
+     0,
+     "hunter 250 / 300 · chest 0 / 0",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "for (...) { IERC20 token = IERC20(tokens[i]); token.transfer(msg.sender, token.balanceOf(address(this))); }"
+}

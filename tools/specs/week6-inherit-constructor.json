@@ -1,0 +1,85 @@
+{
+ "title": "Hero(200) / Hero(50)",
+ "subtitle": "부모 constructor에 인자를 넘겨 영웅마다 다른 체력으로 시작한다.",
+ "lanes": [
+  [
+   "tests.js",
+   "출제 · 채점",
+   "blue"
+  ],
+  [
+   "Hardhat + ethers",
+   "로컬 테스트 체인",
+   "teal"
+  ],
+  [
+   "SuperHeroes.sol",
+   "내가 작성",
+   "orange"
+  ],
+  [
+   "Hero.sol",
+   "constructor(uint _health)",
+   "purple"
+  ]
+ ],
+ "active": 2,
+ "active_label": "Warrior",
+ "sections": [
+  {
+   "title": "배포 (constructor 연쇄)",
+   "color": "orange",
+   "active": true,
+   "steps": [
+    [
+     "call",
+     0,
+     1,
+     "Warrior.deploy()",
+     "인자 없음"
+    ],
+    [
+     "call",
+     1,
+     2,
+     "Warrior 생성",
+     "is Hero(200)"
+    ],
+    [
+     "call",
+     2,
+     3,
+     "Hero constructor(200)",
+     "health = 200"
+    ],
+    [
+     "note",
+     3,
+     "Mage → Hero(50)",
+     "health = 50"
+    ]
+   ]
+  },
+  {
+   "title": "확인",
+   "color": "gray",
+   "steps": [
+    [
+     "call",
+     0,
+     2,
+     "takeDamage(10)",
+     ""
+    ],
+    [
+     "ret",
+     2,
+     0,
+     "Warrior 190 · Mage 40",
+     "✔ 통과"
+    ]
+   ]
+  }
+ ],
+ "footer": "contract Mage is Hero(50) { }   contract Warrior is Hero(200) { }"
+}
